@@ -1,0 +1,95 @@
+[gd_scene load_steps=12 format=3 uid="uid://ccs5ucgrd0tx1"]
+
+[ext_resource type="Texture2D" uid="uid://cgsfthgo76moq" path="res://assets/textures/pac-sprite-sheet.png" id="1_kcrxf"]
+[ext_resource type="Script" uid="uid://dyto4dfkkam4g" path="res://scripts/pacman.gd" id="1_kjyp3"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kjyp3"]
+atlas = ExtResource("1_kcrxf")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_utpjb"]
+atlas = ExtResource("1_kcrxf")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ccr3a"]
+atlas = ExtResource("1_kcrxf")
+region = Rect2(128, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ceynl"]
+atlas = ExtResource("1_kcrxf")
+region = Rect2(192, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_47rue"]
+atlas = ExtResource("1_kcrxf")
+region = Rect2(256, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rx8a7"]
+atlas = ExtResource("1_kcrxf")
+region = Rect2(320, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_noplq"]
+atlas = ExtResource("1_kcrxf")
+region = Rect2(384, 0, 64, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_0qx7c"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kjyp3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_utpjb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ccr3a")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ceynl")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_47rue")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rx8a7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_noplq")
+}],
+"loop": true,
+"name": &"Derecha",
+"speed": 10.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_bgnd2"]
+radius = 27.074
+
+[node name="Pacman" type="CharacterBody2D"]
+script = ExtResource("1_kjyp3")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_0qx7c")
+animation = &"Derecha"
+frame = 4
+frame_progress = 0.26174
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(3, 0)
+shape = SubResource("CircleShape2D_bgnd2")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+
+[node name="SonidoWaka" type="AudioStreamPlayer2D" parent="."]
+
+[node name="SonidoLoseLife" type="AudioStreamPlayer2D" parent="."]
+
+[node name="SonidoLevelUp" type="AudioStreamPlayer2D" parent="."]
+
+[node name="SonidoEatingGhost" type="AudioStreamPlayer2D" parent="."]
+
+[node name="SonidoMientrasAzules" type="AudioStreamPlayer2D" parent="."]
+
+[node name="SonidoEatingCherry" type="AudioStreamPlayer2D" parent="."]
+
+[node name="MusicaIntermision" type="AudioStreamPlayer2D" parent="."]
+
+[node name="MusicaPreparado" type="AudioStreamPlayer2D" parent="."]
