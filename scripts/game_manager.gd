@@ -4,8 +4,13 @@ extends Node2D
 @onready var scene_1 = preload("res://scenes/escena_1.tscn")
 #@onready var world1_2_scene = preload("res://scenes/world_1_2.tscn")
 
+@onready var puntitos_scene = preload("res://scenes/puntitos.tscn")
+
 # SCENE-CONTAINER (CURRENT SCENE):
 @onready var scene_container = $SceneContainer
+
+# PUNTITOS-CONTAINER:
+@onready var puntitos_container = $PuntitosContainer
 
 # REFERENCIAS A SPRITES:
 #@onready var goomba_scene = preload("res://scenes/goomba.tscn")
@@ -53,6 +58,9 @@ func _ready():
 	# REFERENCIA AL TILEMAP:
 	GlobalValues.ref_tilemap = current_scene.get_node("TileMapLayer")
 	
+	# CREAR LOS PUNTITOS EN EL ESCENARIO:
+	crear_puntitos()
+	
 	# INSTANCIAR GOOMBAS:
 	#for spawn_point in goomba_spawns.get_children():
 		#print("Instanciando Goomba en ", spawn_point.global_position)
@@ -72,6 +80,23 @@ func _ready():
 	# CONECTAR SEÑAL de fallZone:
 	#escapatoriaZone_iz.connect("body_entered", Callable(pacman, "_on_escapatoria_zone_iz_body_entered"))
 	#escapatoriaZone_de.connect("body_entered", Callable(pacman, "_on_escapatoria_zone_de_body_entered"))
+
+func crear_puntitos():
+	for filas in range(GlobalValues.FILAS):
+		for col in range(GlobalValues.COLUMNAS):
+			#print(filas * 64, ": ", col * 64)
+			
+			var size = GlobalValues.TILE_SIZE
+			var posicion_global_iteracion = Vector2(col * size[0] + int(size[0] / 2), filas * size[1] + int(size[0] / 2))
+			
+			var tile_pos = GlobalValues.ref_tilemap.local_to_map(posicion_global_iteracion)
+			var tile_id = GlobalValues.ref_tilemap.get_cell_atlas_coords(tile_pos)
+			
+			if FuncionesGenerales.get_coords_divide_64(posicion_global_iteracion) not in GlobalValues.lista_excepciones:
+				if tile_id == Vector2i(1, 0):
+					var puntito = puntitos_scene.instantiate()
+					puntito.global_position = posicion_global_iteracion
+					puntitos_container.add_child(puntito)
 
 # CALL-DEFERRED:
 func ejemplo_call_deferred():

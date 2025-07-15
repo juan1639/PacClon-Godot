@@ -71,6 +71,7 @@ animations = [{
 radius = 29.0
 
 [node name="Pacman" type="CharacterBody2D"]
+collision_layer = 4
 script = ExtResource("1_kjyp3")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
@@ -85,6 +86,10 @@ shape = SubResource("CircleShape2D_0qx7c")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 zoom = Vector2(2, 2)
+limit_left = 0
+limit_top = 0
+limit_right = 1212
+limit_bottom = 960
 
 [node name="SonidoWaka" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("3_utpjb")

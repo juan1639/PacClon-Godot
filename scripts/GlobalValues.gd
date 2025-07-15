@@ -1,10 +1,17 @@
 extends Node
 
-# CONSTANTES GLOBALES:
+# ===================== CONSTANTES GLOBALES ===================
+const PACMAN_INIT_POSITION = Vector2i(9, 8)
 
+const FILAS = 15
+const COLUMNAS = 19
+const TILE_SIZE = [64, 64]
 
-# LIMITES MUNDO:
-
+# LIMITES MUNDO (CAMARA):
+const TOP_LIMIT = 0
+const BOTTOM_LIMIT = 960
+const LEFT_LIMIT = 0
+const RIGHT_LIMIT = 1212
 
 # REFERENCIAS GLOBALES:
 var game_manager_node: Node2D = null
@@ -36,3 +43,8 @@ var fantasmas_instancias = []
 
 # LISTA DESACTIVADOS:
 var lista_desactivados = []
+
+# LISTA_EXCEPCIONES (NO CREAR PUNTITOS EN ESAS POSICIONES):
+var lista_excepciones = [
+	PACMAN_INIT_POSITION, Vector2i(1, 1), Vector2i(17, 1), Vector2i(1, 12), Vector2i(17, 12)
+]

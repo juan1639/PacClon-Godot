@@ -8,4 +8,6 @@ script = ExtResource("1_hwd4i")
 
 [node name="SceneContainer" type="Node2D" parent="."]
 
+[node name="PuntitosContainer" type="Node2D" parent="."]
+
 [node name="Pacman" parent="." instance=ExtResource("2_glms7")]

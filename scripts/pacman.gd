@@ -7,7 +7,8 @@ const SPEED = 100
 var invulnerability = false
 
 # RESPAWN-POSITION:
-const RESPAWN_POSITION = Vector2(608, 288)
+#const RESPAWN_POSITION = Vector2(608, 544)
+const RESPAWN_POSITION = GlobalValues.PACMAN_INIT_POSITION
 
 # REFERENCIAS:
 @onready var animatedSprite = $AnimatedSprite2D
@@ -33,7 +34,7 @@ var fireworks: Node2D = null
 # FUNCION INICIALIZADORA:
 func _ready():
 	print("Instancia Pacman")
-	global_position = RESPAWN_POSITION
+	global_position = FuncionesGenerales.get_coords_multiply_64(RESPAWN_POSITION)
 	FuncionesGenerales.reset_estados_cambio_estado_a("en_juego")
 	#musica_preparado.play()
 
