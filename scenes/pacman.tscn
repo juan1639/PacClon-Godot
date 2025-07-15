@@ -67,8 +67,8 @@ animations = [{
 "speed": 10.0
 }]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_bgnd2"]
-radius = 27.074
+[sub_resource type="CircleShape2D" id="CircleShape2D_0qx7c"]
+radius = 29.0
 
 [node name="Pacman" type="CharacterBody2D"]
 script = ExtResource("1_kjyp3")
@@ -81,7 +81,7 @@ frame_progress = 0.26174
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(3, 0)
-shape = SubResource("CircleShape2D_bgnd2")
+shape = SubResource("CircleShape2D_0qx7c")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 zoom = Vector2(2, 2)

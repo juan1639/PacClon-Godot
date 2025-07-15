@@ -59,9 +59,10 @@ func en_juego(delta, context):
 	
 	FuncionesMovPacman.movimiento_pacman(delta, context)
 	context.move_and_slide()
-	#AnimacionesPacman.update_animation(context)
+	AnimacionesPacman.update_animation(context)
 	#FuncionesTilesPacman.identificar_tile(context.global_position, context.salto, context.timer, context.sonido_coin)
 	#FuncionesGenerales.efecto_intermitente_invulnerable(delta, context)
+	#print(str(Engine.get_frames_per_second()))
 
 #func otros_estados(delta, context):
 	#for estado in context.lista_estados_transiciones:

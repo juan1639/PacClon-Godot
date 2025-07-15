@@ -21,6 +21,7 @@ GlobalValues="*res://scripts/GlobalValues.gd"
 FuncionesGenerales="*res://scripts/FuncionesGenerales.gd"
 FuncionesAuxiliaresPacman="*res://scripts/FuncionesAuxiliaresPacman.gd"
 FuncionesMovPacman="*res://scripts/FuncionesMovPacman.gd"
+AnimacionesPacman="*res://scripts/AnimacionesPacman.gd"
 
 [display]
 
