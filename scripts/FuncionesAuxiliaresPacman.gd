@@ -53,20 +53,15 @@ extends Node
 		#context.panelShowVidas.visible = false
 		#context.musica.play()
 
-#func en_juego(delta, context):
-	#if not GlobalValues.estado_juego["en_juego"]:
-		#return
-	#
-	#FuncionesGenerales.aplicar_gravedad(delta, context)
-	#FuncionesMovSaltoMario.movimiento(delta, context)
-	#FuncionesMovSaltoMario.salto_jugador(delta, context)
-	#FuncionesMovSaltoMario.aplicar_clamps(context)
-	#FuncionesMovSaltoMario.check_world_bottom_limit(context)
-	#context.move_and_slide()
-	#AnimacionesMario.update_animation(context)
-	#FuncionesTilesMario.identificar_tile(context.global_position, context.salto, context.timer, context.sonido_coin)
+func en_juego(delta, context):
+	if not GlobalValues.estado_juego["en_juego"]:
+		return
+	
+	FuncionesMovPacman.movimiento_pacman(delta, context)
+	context.move_and_slide()
+	#AnimacionesPacman.update_animation(context)
+	#FuncionesTilesPacman.identificar_tile(context.global_position, context.salto, context.timer, context.sonido_coin)
 	#FuncionesGenerales.efecto_intermitente_invulnerable(delta, context)
-	#context.check_timeup(delta)
 
 #func otros_estados(delta, context):
 	#for estado in context.lista_estados_transiciones:
@@ -79,8 +74,3 @@ extends Node
 # ================================================================
 # 	FUNCIONES AUXILIARES PACMAN
 #-----------------------------------------------------------------
-func get_axis_hor():
-	return Input.get_axis("ui_left", "ui_right")
-
-func get_axis_ver():
-	return Input.get_axis("ui_up", "ui_down")

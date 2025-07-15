@@ -1,7 +1,7 @@
 extends CharacterBody2D
 
 # SPEED:
-const SPEED = 20
+const SPEED = 100
 
 # INVULNERABLE:
 var invulnerability = false
@@ -34,12 +34,11 @@ var fireworks: Node2D = null
 func _ready():
 	print("Instancia Pacman")
 	global_position = RESPAWN_POSITION
-	musica_preparado.play()
+	FuncionesGenerales.reset_estados_cambio_estado_a("en_juego")
+	#musica_preparado.play()
 
 # FUNCION EJECUTANDOSE A 60 FPS:
 func _physics_process(delta):
-	pass
-	
 	#FuncionesAuxiliaresPacman.transicion_level_up(delta, self)
 	#FuncionesAuxiliaresPacman.transicion_vida_menos(delta, self)
 	#FuncionesAuxiliaresPacman.transicion_next_vida(delta, self)
