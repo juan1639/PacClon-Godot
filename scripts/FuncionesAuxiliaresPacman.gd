@@ -56,6 +56,10 @@ signal scene_actualizada
 		#context.panelShowVidas.visible = false
 		#context.musica.play()
 
+func transicion_preparado():
+	if not GlobalValues.estado_juego["transicion_preparado"]:
+		return
+
 func en_juego(delta, context):
 	if not GlobalValues.estado_juego["en_juego"]:
 		return

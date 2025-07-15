@@ -31,10 +31,11 @@ var marcadores = {
 # ESTADOS DEL JUEGO
 var estado_juego = {
 	"prejuego": true,
-	"preparado": false,
+	"transicion_preparado": false,
 	"en_juego": false,
 	"transicion_vida_menos": false,
 	"transicion_next_vida": false,
+	"transicion_level_up": false,
 	"game_over": false
 }
 
@@ -46,5 +47,5 @@ var lista_desactivados = []
 
 # LISTA_EXCEPCIONES (NO CREAR PUNTITOS EN ESAS POSICIONES):
 var lista_excepciones = [
-	PACMAN_INIT_POSITION, Vector2i(1, 1), Vector2i(17, 1), Vector2i(1, 12), Vector2i(17, 12)
+	PACMAN_INIT_POSITION, Vector2i(1, 1), Vector2i(17, 1), Vector2i(1, 13), Vector2i(17, 13)
 ]

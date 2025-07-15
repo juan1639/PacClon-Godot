@@ -5,12 +5,14 @@ extends Node2D
 #@onready var world1_2_scene = preload("res://scenes/world_1_2.tscn")
 
 @onready var puntitos_scene = preload("res://scenes/puntitos.tscn")
+@onready var puntos_gordos_scene = preload("res://scenes/puntos_gordos.tscn")
 
 # SCENE-CONTAINER (CURRENT SCENE):
 @onready var scene_container = $SceneContainer
 
 # PUNTITOS-CONTAINER:
 @onready var puntitos_container = $PuntitosContainer
+@onready var puntos_gordos_container = $PuntosGordosContainer
 
 # REFERENCIAS A SPRITES:
 #@onready var goomba_scene = preload("res://scenes/goomba.tscn")
@@ -32,15 +34,13 @@ func _ready():
 	#var escapatoriaZone_de = current_world.get_node("EscapatoriaZoneDe")
 	
 	# RESETEAR MARCADORES:
-	#if GlobalValues.marcadores["scene"] == 1:
-		#FuncionesGenerales.reset_scores()
-		#FuncionesGenerales.agregar_puntos_sin_texto(-99)
-		#FuncionesGenerales.agregar_monedas(-99)
-		#FuncionesGenerales.actualizar_world(0)
-	#else:
-		#FuncionesGenerales.agregar_puntos_sin_texto(0)
-		#FuncionesGenerales.agregar_monedas(0)
-		#FuncionesGenerales.actualizar_world(0)
+	if GlobalValues.marcadores["scene"] == 1:
+		FuncionesGenerales.reset_scores()
+		FuncionesAuxiliaresPacman.agregar_puntos_sin_texto(-99)
+		FuncionesAuxiliaresPacman.actualizar_scene(0)
+	else:
+		FuncionesAuxiliaresPacman.agregar_puntos_sin_texto(0)
+		FuncionesAuxiliaresPacman.actualizar_scene(0)
 	
 	# RESETEAR LISTA-DESACTIVADOS:
 	GlobalValues.lista_desactivados = []
@@ -60,6 +60,7 @@ func _ready():
 	
 	# CREAR LOS PUNTITOS EN EL ESCENARIO:
 	crear_puntitos()
+	crear_puntos_gordos()
 	
 	# INSTANCIAR GOOMBAS:
 	#for spawn_point in goomba_spawns.get_children():
@@ -97,6 +98,17 @@ func crear_puntitos():
 					var puntito = puntitos_scene.instantiate()
 					puntito.global_position = posicion_global_iteracion
 					puntitos_container.add_child(puntito)
+
+func crear_puntos_gordos():
+	var size = GlobalValues.TILE_SIZE
+	
+	for coords in GlobalValues.lista_excepciones:
+		if coords != GlobalValues.PACMAN_INIT_POSITION:
+			var punto_gordo = puntos_gordos_scene.instantiate()
+			var x = coords.x * size[0] + int(size[0] / 2)
+			var y = coords.y * size[1] + int(size[1] / 2)
+			punto_gordo.global_position = Vector2(x, y)
+			puntos_gordos_container.add_child(punto_gordo)
 
 # CALL-DEFERRED:
 func ejemplo_call_deferred():

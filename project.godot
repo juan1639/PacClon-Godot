@@ -40,6 +40,7 @@ theme/custom_font="uid://0aates0v5a4s"
 2d_physics/layer_1="Tilemap"
 2d_physics/layer_2="Puntitos"
 2d_physics/layer_3="Pacman"
+2d_physics/layer_4="PuntosGordos"
 
 [rendering]
 

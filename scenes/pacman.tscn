@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://ccs5ucgrd0tx1"]
+[gd_scene load_steps=24 format=3 uid="uid://ccs5ucgrd0tx1"]
 
 [ext_resource type="Texture2D" uid="uid://cgsfthgo76moq" path="res://assets/textures/pac-sprite-sheet.png" id="1_kcrxf"]
 [ext_resource type="Script" uid="uid://dyto4dfkkam4g" path="res://scripts/pacman.gd" id="1_kjyp3"]
@@ -10,61 +10,96 @@
 [ext_resource type="AudioStream" uid="uid://criqj712hhtn8" path="res://assets/audio/pacmanintermision.ogg" id="8_noplq"]
 [ext_resource type="AudioStream" uid="uid://babvco0t8x86m" path="res://assets/audio/pacmaninicionivel.ogg" id="9_0qx7c"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_kjyp3"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_0qx7c"]
 atlas = ExtResource("1_kcrxf")
 region = Rect2(0, 0, 64, 64)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_utpjb"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_bgnd2"]
 atlas = ExtResource("1_kcrxf")
 region = Rect2(64, 0, 64, 64)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_ccr3a"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_e1jvo"]
 atlas = ExtResource("1_kcrxf")
 region = Rect2(128, 0, 64, 64)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_ceynl"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_jno2f"]
 atlas = ExtResource("1_kcrxf")
 region = Rect2(192, 0, 64, 64)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_47rue"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_cc2ie"]
 atlas = ExtResource("1_kcrxf")
 region = Rect2(256, 0, 64, 64)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_rx8a7"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_n0x1e"]
 atlas = ExtResource("1_kcrxf")
 region = Rect2(320, 0, 64, 64)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_noplq"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_pmluw"]
 atlas = ExtResource("1_kcrxf")
 region = Rect2(384, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_v8rr8"]
+atlas = ExtResource("1_kcrxf")
+region = Rect2(448, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tfk33"]
+atlas = ExtResource("1_kcrxf")
+region = Rect2(512, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ernvp"]
+atlas = ExtResource("1_kcrxf")
+region = Rect2(576, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dtnpd"]
+atlas = ExtResource("1_kcrxf")
+region = Rect2(640, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nlgrm"]
+atlas = ExtResource("1_kcrxf")
+region = Rect2(704, 0, 64, 64)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_0qx7c"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_kjyp3")
+"texture": SubResource("AtlasTexture_0qx7c")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_utpjb")
+"texture": SubResource("AtlasTexture_bgnd2")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_ccr3a")
+"texture": SubResource("AtlasTexture_e1jvo")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_ceynl")
+"texture": SubResource("AtlasTexture_jno2f")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_47rue")
+"texture": SubResource("AtlasTexture_cc2ie")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_rx8a7")
+"texture": SubResource("AtlasTexture_n0x1e")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_noplq")
+"texture": SubResource("AtlasTexture_pmluw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_v8rr8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tfk33")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ernvp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dtnpd")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nlgrm")
 }],
 "loop": true,
 "name": &"Derecha",
-"speed": 10.0
+"speed": 24.0
 }]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_0qx7c"]
@@ -77,8 +112,6 @@ script = ExtResource("1_kjyp3")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_0qx7c")
 animation = &"Derecha"
-frame = 4
-frame_progress = 0.26174
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(3, 0)
@@ -90,6 +123,9 @@ limit_left = 0
 limit_top = 0
 limit_right = 1212
 limit_bottom = 960
+
+[node name="TimerPreparado" type="Timer" parent="."]
+one_shot = true
 
 [node name="SonidoWaka" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("3_utpjb")
@@ -114,3 +150,5 @@ stream = ExtResource("8_noplq")
 
 [node name="MusicaPreparado" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("9_0qx7c")
+
+[connection signal="timeout" from="TimerPreparado" to="." method="_on_timer_preparado_timeout"]

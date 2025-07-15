@@ -15,7 +15,7 @@ const RESPAWN_POSITION = GlobalValues.PACMAN_INIT_POSITION
 @onready var camera = $Camera2D
 #@onready var cpuParticles = $CPUParticles2D
 #@onready var cpuParticlesFireworks = preload("res://scenes/fireworks.tscn")
-#@onready var timer = $Timer
+@onready var timerPreparado = $TimerPreparado
 #@onready var timerColision = $TimerColision
 #@onready var timerTransicionVidaMenos = $TimerTransicionVidaMenos
 #@onready var timerAzules = $TimerAzules
@@ -35,34 +35,30 @@ var fireworks: Node2D = null
 func _ready():
 	print("Instancia Pacman")
 	global_position = FuncionesGenerales.get_coords_multiply_64(RESPAWN_POSITION)
-	FuncionesGenerales.reset_estados_cambio_estado_a("en_juego")
-	#musica_preparado.play()
+	get_child(0).frame = 4
+	FuncionesGenerales.reset_estados_cambio_estado_a("transicion_preparado")
+	timerPreparado.start(4.2)
+	musica_preparado.play()
 
 # FUNCION EJECUTANDOSE A 60 FPS:
 func _physics_process(delta):
-	#FuncionesAuxiliaresPacman.transicion_level_up(delta, self)
+	FuncionesAuxiliaresPacman.transicion_preparado()
 	#FuncionesAuxiliaresPacman.transicion_vida_menos(delta, self)
 	#FuncionesAuxiliaresPacman.transicion_next_vida(delta, self)
+	#FuncionesAuxiliaresPacman.transicion_level_up(delta, self)
 	FuncionesAuxiliaresPacman.en_juego(delta, self)
 	#FuncionesAuxiliaresPacman.otros_estados(delta, self)
 
 # ----------------------------------------------------------------
 #	S E Ñ A L E S
 # ----------------------------------------------------------------
+func _on_timer_preparado_timeout():
+	FuncionesGenerales.reset_estados_cambio_estado_a("en_juego")
+
 # MARIO FALL-ZONES:
 #func _on_fall_zone_body_entered(body):
 	#if body == self and GlobalValues.estado_juego["en_juego"]:
 		#actions_lose_life()
-
-# TRANSICIONAR DE ENTRAR-TUBERIA A ESTADO EN_JUEGO:
-#func _on_timer_entrar_tuberia_timeout():
-	#FuncionesGenerales.reset_estados_cambio_estado_a("en_juego")
-	#camera_2.enabled = false
-	#camera.enabled = true
-	#global_position = RESPAWN_POSITION_UNDERGROUND_2
-	#musica.stop()
-	#musica = musica_fondo_under
-	#musica.play()
 
 # COLISION VS ESTRELLA (INVULNERAB):
 #func _on_estrella_body_entered(body):

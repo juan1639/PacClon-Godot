@@ -3,7 +3,7 @@ extends CanvasLayer
 # REFERENCIAS:
 @onready var puntos = $PanelContainer/MarginContainer/HBoxContainer/Puntos
 @onready var nivel = $PanelContainer/MarginContainer/HBoxContainer/Nivel
-@onready var vidas = $PanelContainer/MarginContainer/HBoxContainer/Vidas
+@onready var vidas = $PanelContainer/MarginContainer/HBoxContainer/HBoxContainer/Vidas
 
 var signalConnect = false
 
