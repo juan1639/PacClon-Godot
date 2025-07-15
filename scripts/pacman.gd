@@ -43,7 +43,7 @@ func _physics_process(delta):
 	#FuncionesAuxiliaresPacman.transicion_level_up(delta, self)
 	#FuncionesAuxiliaresPacman.transicion_vida_menos(delta, self)
 	#FuncionesAuxiliaresPacman.transicion_next_vida(delta, self)
-	#FuncionesAuxiliaresPacman.en_juego(delta, self)
+	FuncionesAuxiliaresPacman.en_juego(delta, self)
 	#FuncionesAuxiliaresPacman.otros_estados(delta, self)
 
 # ----------------------------------------------------------------

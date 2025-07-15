@@ -19,14 +19,15 @@ config/icon="res://icon.svg"
 
 GlobalValues="*res://scripts/GlobalValues.gd"
 FuncionesGenerales="*res://scripts/FuncionesGenerales.gd"
+FuncionesAuxiliaresPacman="*res://scripts/FuncionesAuxiliaresPacman.gd"
 
 [display]
 
 window/size/viewport_width=640
 window/size/viewport_height=480
 window/size/mode=3
-window/size/window_width_override=640
-window/size/window_height_override=480
+window/size/window_width_override=1280
+window/size/window_height_override=720
 
 [gui]
 

@@ -1,7 +1,14 @@
-[gd_scene load_steps=12 format=3 uid="uid://ccs5ucgrd0tx1"]
+[gd_scene load_steps=19 format=3 uid="uid://ccs5ucgrd0tx1"]
 
 [ext_resource type="Texture2D" uid="uid://cgsfthgo76moq" path="res://assets/textures/pac-sprite-sheet.png" id="1_kcrxf"]
 [ext_resource type="Script" uid="uid://dyto4dfkkam4g" path="res://scripts/pacman.gd" id="1_kjyp3"]
+[ext_resource type="AudioStream" uid="uid://dc0rlgvn2tjdl" path="res://assets/audio/pacmanwakawaka.ogg" id="3_utpjb"]
+[ext_resource type="AudioStream" uid="uid://dakd6swpxs0me" path="res://assets/audio/pacmandies.ogg" id="4_ccr3a"]
+[ext_resource type="AudioStream" uid="uid://dvmixfmwyujmj" path="res://assets/audio/pacmaneatinghost.ogg" id="5_ceynl"]
+[ext_resource type="AudioStream" uid="uid://cov3ti6omjrlr" path="res://assets/audio/pacmanazules.ogg" id="6_47rue"]
+[ext_resource type="AudioStream" uid="uid://4jix2omhe47l" path="res://assets/audio/pacmaneatingcherry.ogg" id="7_rx8a7"]
+[ext_resource type="AudioStream" uid="uid://criqj712hhtn8" path="res://assets/audio/pacmanintermision.ogg" id="8_noplq"]
+[ext_resource type="AudioStream" uid="uid://babvco0t8x86m" path="res://assets/audio/pacmaninicionivel.ogg" id="9_0qx7c"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_kjyp3"]
 atlas = ExtResource("1_kcrxf")
@@ -77,19 +84,27 @@ position = Vector2(3, 0)
 shape = SubResource("CircleShape2D_bgnd2")
 
 [node name="Camera2D" type="Camera2D" parent="."]
+zoom = Vector2(2, 2)
 
 [node name="SonidoWaka" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_utpjb")
 
 [node name="SonidoLoseLife" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("4_ccr3a")
 
 [node name="SonidoLevelUp" type="AudioStreamPlayer2D" parent="."]
 
 [node name="SonidoEatingGhost" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("5_ceynl")
 
 [node name="SonidoMientrasAzules" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("6_47rue")
 
 [node name="SonidoEatingCherry" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("7_rx8a7")
 
 [node name="MusicaIntermision" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("8_noplq")
 
 [node name="MusicaPreparado" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("9_0qx7c")
