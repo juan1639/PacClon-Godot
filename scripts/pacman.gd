@@ -1,7 +1,7 @@
 extends CharacterBody2D
 
 # SPEED:
-const SPEED = 100
+const SPEED = 150
 
 # INVULNERABLE:
 var invulnerability = false

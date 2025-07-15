@@ -1,5 +1,8 @@
 extends Node
 
+signal marcador_actualizado
+signal scene_actualizada
+
 # =================================================================
 # 	T R A N S I C I O N E S
 # -----------------------------------------------------------------
@@ -75,3 +78,25 @@ func en_juego(delta, context):
 # ================================================================
 # 	FUNCIONES AUXILIARES PACMAN
 #-----------------------------------------------------------------
+# SCORES:
+func agregar_puntos(cantidad, global_position):
+	GlobalValues.marcadores["score"] += cantidad
+	emit_signal("marcador_actualizado")
+	#var showBonus = show_bonus_scene.instantiate()
+	#showBonus.global_position = global_position
+	#showBonus.frame_ssheet = showBonus.choose_bonus[str(cantidad)]
+	#add_child(showBonus)
+
+# SOLO SUMAR PUNTOS (BONUS-FINAL-NIVEL):
+func agregar_puntos_sin_texto(cantidad):
+	GlobalValues.marcadores["score"] += cantidad
+	
+	if cantidad < 0:
+		GlobalValues.marcadores["score"] = 0
+	
+	emit_signal("marcador_actualizado")
+
+# ACTUALIZAR SCENE:
+func actualizar_scene(scene):
+	GlobalValues.marcadores["scene"] += scene
+	emit_signal("scene_actualizada")

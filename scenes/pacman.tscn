@@ -93,6 +93,7 @@ limit_bottom = 960
 
 [node name="SonidoWaka" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("3_utpjb")
+pitch_scale = 1.4
 
 [node name="SonidoLoseLife" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("4_ccr3a")
