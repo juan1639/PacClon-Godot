@@ -1,7 +1,7 @@
 extends CharacterBody2D
 
 # SPEED:
-const SPEED = 2
+const SPEED = 4
 
 # INVULNERABLE:
 var invulnerability = false
@@ -155,10 +155,6 @@ func _on_timer_preparado_timeout():
 # INSTANCIAR PREPARADO:
 func instanciar_preparado():
 	nodoPadre.add_child(texto_preparado)
-
-# VELOCITY ZERO:
-func velocity_zero():
-	velocity = Vector2(0, 0)
 
 # Pulsar ESC (salir):
 func _input(event):

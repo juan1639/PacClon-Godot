@@ -19,7 +19,7 @@ func cambio_direccion():
 	var axis_hor = Input.get_axis("ui_left", "ui_right")
 	
 	if axis_ver != 0.0:
-		print(axis_hor, axis_ver)
+		#print(axis_hor, axis_ver)
 		
 		if axis_ver < 0.0:
 			intento_cambio_direccion = "up"

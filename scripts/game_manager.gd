@@ -88,6 +88,8 @@ func _ready():
 	#escapatoriaZone_iz.connect("body_entered", Callable(pacman, "_on_escapatoria_zone_iz_body_entered"))
 	#escapatoriaZone_de.connect("body_entered", Callable(pacman, "_on_escapatoria_zone_de_body_entered"))
 
+# FUNCIONES:
+# INSTANCIAR PUNTITOS:
 func crear_puntitos():
 	for filas in range(GlobalValues.FILAS):
 		for col in range(GlobalValues.COLUMNAS):
@@ -105,6 +107,7 @@ func crear_puntitos():
 					puntito.global_position = posicion_global_iteracion
 					puntitos_container.add_child(puntito)
 
+# INSTANCIAR PUNTOS GORDOS:
 func crear_puntos_gordos():
 	var size = GlobalValues.TILE_SIZE
 	
@@ -116,9 +119,10 @@ func crear_puntos_gordos():
 			punto_gordo.global_position = Vector2(x, y)
 			puntos_gordos_container.add_child(punto_gordo)
 
+# INSTANCIAR FRUTA (SE INVOCA MEDIANTE TIMER-TIEMOUT-FRUTA):
 func instanciar_fruta():
 	var fruta = fruta_scene.instantiate()
-	fruta.global_position = Vector2(64+32, 256+32)
+	#fruta.global_position = Vector2(64+32, 256+32)
 	add_child(fruta)
 
 # CALL-DEFERRED:

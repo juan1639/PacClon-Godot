@@ -1,6 +1,6 @@
 extends Node
 
-# =================== CONSTANTES GLOBALES ===================
+# CONSTANTES GLOBALES:
 const PACMAN_INIT_POSITION = Vector2i(9, 8)
 
 const FILAS = 15
