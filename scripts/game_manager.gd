@@ -6,6 +6,7 @@ extends Node2D
 
 @onready var puntitos_scene = preload("res://scenes/puntitos.tscn")
 @onready var puntos_gordos_scene = preload("res://scenes/puntos_gordos.tscn")
+@onready var fruta_scene = preload("res://scenes/fruta.tscn")
 
 # SCENE-CONTAINER (CURRENT SCENE):
 @onready var scene_container = $SceneContainer
@@ -22,13 +23,18 @@ extends Node2D
 # REFERENCIA A PACMAN(JUGADOR):
 @onready var pacman = $Pacman
 
+# REFERENCIAS A LOS TIMERS:
+@onready var timerFruta = $TimerFruta
+
 # FUNCION INICIALIZADORA:
 func _ready():
 	print("Start new game")
+	timerFruta.start(12.1)
 	
 	# INSTANCIAR CURRENT-WORLD:
 	var current_scene = scene_1.instantiate()
 	scene_container.add_child(current_scene)
+	GlobalValues.laberinto = Escenarios.get_laberinto()
 	
 	#var escapatoriaZone_iz = current_world.get_node("EscapatoriaZoneIz")
 	#var escapatoriaZone_de = current_world.get_node("EscapatoriaZoneDe")
@@ -110,6 +116,11 @@ func crear_puntos_gordos():
 			punto_gordo.global_position = Vector2(x, y)
 			puntos_gordos_container.add_child(punto_gordo)
 
+func instanciar_fruta():
+	var fruta = fruta_scene.instantiate()
+	fruta.global_position = Vector2(64+32, 256+32)
+	add_child(fruta)
+
 # CALL-DEFERRED:
 func ejemplo_call_deferred():
 	pass
@@ -134,3 +145,6 @@ func _on_next_level_instance():
 	
 	#var buttonNextLevel = button_next_level_scene.instantiate()
 	#add_child(buttonNextLevel)
+
+func _on_timer_fruta_timeout():
+	instanciar_fruta()

@@ -28,6 +28,11 @@ func get_coords_divide_64(vector):
 	var newVector = Vector2i(vector.x, vector.y)
 	return newVector / Vector2i(size[0], size[1])
 
+func get_coords_divide_64_topleft(vector):
+	var size = GlobalValues.TILE_SIZE
+	var newVector = Vector2i(vector.x - int(size[0] / 2), vector.y - int(size[1] / 2))
+	return newVector / Vector2i(size[0], size[1])
+
 # RESETEAR-ESTADOS Y CAMBIAR UN ESTADO:
 func reset_estados_cambio_estado_a(estado):
 	for keyName in GlobalValues.estado_juego.keys():

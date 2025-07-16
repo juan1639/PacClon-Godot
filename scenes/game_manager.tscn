@@ -16,3 +16,8 @@ script = ExtResource("1_hwd4i")
 [node name="Pacman" parent="." instance=ExtResource("2_glms7")]
 
 [node name="Marcadores" parent="." instance=ExtResource("3_udu3i")]
+
+[node name="TimerFruta" type="Timer" parent="."]
+one_shot = true
+
+[connection signal="timeout" from="TimerFruta" to="." method="_on_timer_fruta_timeout"]

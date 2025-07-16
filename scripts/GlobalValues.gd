@@ -1,11 +1,13 @@
 extends Node
 
-# ===================== CONSTANTES GLOBALES ===================
+# =================== CONSTANTES GLOBALES ===================
 const PACMAN_INIT_POSITION = Vector2i(9, 8)
 
 const FILAS = 15
 const COLUMNAS = 19
 const TILE_SIZE = [64, 64]
+
+const TILE_SOLIDO = 9
 
 # LIMITES MUNDO (CAMARA):
 const TOP_LIMIT = 0
@@ -38,6 +40,9 @@ var estado_juego = {
 	"transicion_level_up": false,
 	"game_over": false
 }
+
+# Referencia al labarinto (de cada SCENE):
+var laberinto = null
 
 # LISTA DE FANTASMAS:
 var fantasmas_instancias = []

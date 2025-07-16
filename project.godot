@@ -22,6 +22,7 @@ FuncionesGenerales="*res://scripts/FuncionesGenerales.gd"
 FuncionesAuxiliaresPacman="*res://scripts/FuncionesAuxiliaresPacman.gd"
 FuncionesMovPacman="*res://scripts/FuncionesMovPacman.gd"
 AnimacionesPacman="*res://scripts/AnimacionesPacman.gd"
+Escenarios="*res://scripts/Escenarios.gd"
 
 [display]
 

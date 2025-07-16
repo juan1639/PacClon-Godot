@@ -1,0 +1,15 @@
+[gd_scene load_steps=4 format=3 uid="uid://dn24belmmoow3"]
+
+[ext_resource type="Texture2D" uid="uid://c1rvm7ikuwmj" path="res://assets/textures/cerezas.png" id="1_ch7q4"]
+[ext_resource type="Script" uid="uid://dwulfosjdrtqs" path="res://scripts/fruta.gd" id="1_kp0qs"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ch7q4"]
+
+[node name="Fruta" type="CharacterBody2D"]
+script = ExtResource("1_kp0qs")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_ch7q4")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_ch7q4")
