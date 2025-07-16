@@ -36,7 +36,7 @@ func cambio_direccion():
 			intento_cambio_direccion = "de"
 			return
 
-func movimiento_pacman(delta, context):
+func movimiento_pacman(context):
 	cambio_direccion()
 	
 	var direccion = dic_direcciones[intento_cambio_direccion]

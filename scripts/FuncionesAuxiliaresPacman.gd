@@ -60,11 +60,11 @@ func transicion_preparado():
 	if not GlobalValues.estado_juego["transicion_preparado"]:
 		return
 
-func en_juego(delta, context):
+func en_juego(context):
 	if not GlobalValues.estado_juego["en_juego"]:
 		return
 	
-	FuncionesMovPacman.movimiento_pacman(delta, context)
+	FuncionesMovPacman.movimiento_pacman(context)
 	context.move_and_slide()
 	AnimacionesPacman.update_animation(context)
 	#FuncionesTilesPacman.identificar_tile(context.global_position, context.salto, context.timer, context.sonido_coin)

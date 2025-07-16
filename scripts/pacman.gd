@@ -29,6 +29,10 @@ const RESPAWN_POSITION = GlobalValues.PACMAN_INIT_POSITION
 @onready var musica_preparado = $MusicaPreparado
 
 # REFERENCIAS OTRAS ESCENAS:
+@onready var nodoPadre = get_parent()
+var texto_preparado: CanvasLayer
+var txt_preparado_scene = preload("res://scenes/texto_preparado.tscn")
+
 var fireworks: Node2D = null
 
 # FUNCION INICIALIZADORA:
@@ -36,8 +40,12 @@ func _ready():
 	print("Instancia Pacman")
 	global_position = FuncionesGenerales.get_coords_multiply_64(RESPAWN_POSITION)
 	get_child(0).frame = 4
+	
 	FuncionesGenerales.reset_estados_cambio_estado_a("transicion_preparado")
+	texto_preparado = txt_preparado_scene.instantiate()
+	call_deferred("instanciar_preparado")
 	timerPreparado.start(4.2)
+	
 	musica_preparado.play()
 
 # FUNCION EJECUTANDOSE A 60 FPS:
@@ -46,7 +54,7 @@ func _physics_process(delta):
 	#FuncionesAuxiliaresPacman.transicion_vida_menos(delta, self)
 	#FuncionesAuxiliaresPacman.transicion_next_vida(delta, self)
 	#FuncionesAuxiliaresPacman.transicion_level_up(delta, self)
-	FuncionesAuxiliaresPacman.en_juego(delta, self)
+	FuncionesAuxiliaresPacman.en_juego(self)
 	#FuncionesAuxiliaresPacman.otros_estados(delta, self)
 
 # ----------------------------------------------------------------
@@ -54,6 +62,7 @@ func _physics_process(delta):
 # ----------------------------------------------------------------
 func _on_timer_preparado_timeout():
 	FuncionesGenerales.reset_estados_cambio_estado_a("en_juego")
+	texto_preparado.queue_free()
 
 # MARIO FALL-ZONES:
 #func _on_fall_zone_body_entered(body):
@@ -142,6 +151,10 @@ func _on_timer_preparado_timeout():
 		#musica_gameover.play()
 	#else:
 		#sonido_lose_life.play()
+
+# INSTANCIAR PREPARADO:
+func instanciar_preparado():
+	nodoPadre.add_child(texto_preparado)
 
 # VELOCITY ZERO:
 func velocity_zero():

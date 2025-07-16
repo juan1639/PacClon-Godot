@@ -2,7 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://cgsfthgo76moq" path="res://assets/textures/pac-sprite-sheet.png" id="1_kcrxf"]
 [ext_resource type="Script" uid="uid://dyto4dfkkam4g" path="res://scripts/pacman.gd" id="1_kjyp3"]
-[ext_resource type="AudioStream" uid="uid://dc0rlgvn2tjdl" path="res://assets/audio/pacmanwakawaka.ogg" id="3_utpjb"]
+[ext_resource type="AudioStream" uid="uid://ca8ps0d1fu128" path="res://assets/audio/pacmanwaka-recortado.mp3" id="3_0qx7c"]
 [ext_resource type="AudioStream" uid="uid://dakd6swpxs0me" path="res://assets/audio/pacmandies.ogg" id="4_ccr3a"]
 [ext_resource type="AudioStream" uid="uid://dvmixfmwyujmj" path="res://assets/audio/pacmaneatinghost.ogg" id="5_ceynl"]
 [ext_resource type="AudioStream" uid="uid://cov3ti6omjrlr" path="res://assets/audio/pacmanazules.ogg" id="6_47rue"]
@@ -128,8 +128,7 @@ limit_bottom = 960
 one_shot = true
 
 [node name="SonidoWaka" type="AudioStreamPlayer2D" parent="."]
-stream = ExtResource("3_utpjb")
-pitch_scale = 1.4
+stream = ExtResource("3_0qx7c")
 
 [node name="SonidoLoseLife" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("4_ccr3a")
