@@ -5,6 +5,9 @@ const RESPAWN_POSITION = Vector2(9, 11)
 
 const SPEED = 4
 var direccion = "de"
+var idAnimacion: String
+var ini_x: int
+var ini_y: int
 
 var lista_puntos_intersecciones = []
 
@@ -16,6 +19,7 @@ func _ready():
 	lista_puntos_intersecciones = FuncionesGenerales.get_puntos_intersecciones()
 	#print(lista_puntos_intersecciones)
 	get_respawn_position()
+	update_animation()
 
 # FUNCION UPDATE:
 func _physics_process(delta):
@@ -26,8 +30,8 @@ func _physics_process(delta):
 # GET RESPAWN POSITION:
 func get_respawn_position():
 	var SIZE = GlobalValues.TILE_SIZE
-	var x = 5 * SIZE[0] + int(SIZE[0] / 2)
-	var y = 4 * SIZE[1] + int(SIZE[1] / 2)
+	var x = ini_x * SIZE[0] + int(SIZE[0] / 2)
+	var y = ini_y * SIZE[1] + int(SIZE[1] / 2)
 	global_position = Vector2(x, y)
 
 # MOVIMIENTO FANTASMA:
@@ -74,6 +78,7 @@ func seguir_a_pacman():
 # ANIMACIONES:
 func update_animation():
 	var animacion = GlobalValues.dic_direcciones[direccion][3]
+	animacion += idAnimacion
 	animatedSprite.play(animacion)
 
 # COLISION VS FANTASMA:

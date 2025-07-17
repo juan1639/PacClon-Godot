@@ -1,7 +1,7 @@
 extends Node
 
 # CONSTANTES GLOBALES:
-const PACMAN_INIT_POSITION = Vector2i(9, 8)
+const PACMAN_INIT_POSITION = Vector2i(9, 4)
 
 const FILAS = 15
 const COLUMNAS = 19
@@ -19,6 +19,14 @@ var dic_direcciones = {
 	"do": [0, 1, "upizde", "Abajo"],
 	"iz": [-1, 0, "updode", "Izquierda"],
 	"de": [1, 0, "updoiz", "Derecha"]
+}
+
+# DICCIONARIO ID-FANTASMAS:
+var dic_id_fantasmas = {
+	"azul": ["", 3, 8],
+	"rojo": ["rojo", 5, 8],
+	"verde": ["verde", 14, 8],
+	"rosa": ["rosa", 16, 8]
 }
 
 # PUNTOS INTERSECCIONES (OJO! MULTIPLOS DE 50, hay que convertirlos a MULTIPLOS de 64):

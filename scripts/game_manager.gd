@@ -130,8 +130,12 @@ func instanciar_fruta():
 
 # INSTANCIAR FANTASMAS:
 func instanciar_fantasmas():
-	var fantasma = fantasma_scene.instantiate()
-	add_child(fantasma)
+	for idFantasma in GlobalValues.dic_id_fantasmas.keys():
+		var fantasma = fantasma_scene.instantiate()
+		fantasma.idAnimacion = GlobalValues.dic_id_fantasmas[idFantasma][0]
+		fantasma.ini_x = GlobalValues.dic_id_fantasmas[idFantasma][1]
+		fantasma.ini_y = GlobalValues.dic_id_fantasmas[idFantasma][2]
+		add_child(fantasma)
 
 # CALL-DEFERRED:
 func ejemplo_call_deferred():
