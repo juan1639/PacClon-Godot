@@ -7,6 +7,7 @@ extends Node2D
 @onready var puntitos_scene = preload("res://scenes/puntitos.tscn")
 @onready var puntos_gordos_scene = preload("res://scenes/puntos_gordos.tscn")
 @onready var fruta_scene = preload("res://scenes/fruta.tscn")
+@onready var fantasma_scene = preload("res://scenes/fantasma.tscn")
 
 # SCENE-CONTAINER (CURRENT SCENE):
 @onready var scene_container = $SceneContainer
@@ -68,6 +69,8 @@ func _ready():
 	crear_puntitos()
 	crear_puntos_gordos()
 	
+	instanciar_fantasmas()
+	
 	# INSTANCIAR GOOMBAS:
 	#for spawn_point in goomba_spawns.get_children():
 		#print("Instanciando Goomba en ", spawn_point.global_position)
@@ -124,6 +127,11 @@ func instanciar_fruta():
 	var fruta = fruta_scene.instantiate()
 	#fruta.global_position = Vector2(64+32, 256+32)
 	add_child(fruta)
+
+# INSTANCIAR FANTASMAS:
+func instanciar_fantasmas():
+	var fantasma = fantasma_scene.instantiate()
+	add_child(fantasma)
 
 # CALL-DEFERRED:
 func ejemplo_call_deferred():

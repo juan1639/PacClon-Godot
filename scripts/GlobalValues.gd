@@ -9,13 +9,16 @@ const TILE_SIZE = [64, 64]
 
 const TILE_SOLIDO = 9
 
+# FANTASMAS GLOBAL VALUES:
+var porcentaje_seguir_a_pacman = 55
+
 # DICCIONARIO DIRECCIONES (FRUTA): [x, y]
 var dic_direcciones = {
-	"null": [0, 0, "null"],
-	"up": [0, -1, "doizde"],
-	"do": [0, 1, "upizde"],
-	"iz": [-1, 0, "updode"],
-	"de": [1, 0, "updoiz"]
+	"null": [0, 0, "null", "Default"],
+	"up": [0, -1, "doizde", "Arriba"],
+	"do": [0, 1, "upizde", "Abajo"],
+	"iz": [-1, 0, "updode", "Izquierda"],
+	"de": [1, 0, "updoiz", "Derecha"]
 }
 
 # PUNTOS INTERSECCIONES (OJO! MULTIPLOS DE 50, hay que convertirlos a MULTIPLOS de 64):

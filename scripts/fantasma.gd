@@ -3,30 +3,34 @@ extends CharacterBody2D
 # SE OBTIENE EN get_respawn_position():
 const RESPAWN_POSITION = Vector2(9, 11)
 
-const SPEED = 2
+const SPEED = 4
 var direccion = "de"
 
-const lista_bonus_frutas = [200, 200, 400, 800, 1600, 2000]
 var lista_puntos_intersecciones = []
+
+# REFERENCIAS:
+@onready var animatedSprite = $AnimatedSprite2D
 
 # FUNCION INICIALIZADORA:
 func _ready():
 	lista_puntos_intersecciones = FuncionesGenerales.get_puntos_intersecciones()
-	print(lista_puntos_intersecciones)
+	#print(lista_puntos_intersecciones)
 	get_respawn_position()
 
 # FUNCION UPDATE:
 func _physics_process(delta):
-	movimiento()
+	if GlobalValues.estado_juego["en_juego"]:
+		movimiento()
+		update_animation()
 
 # GET RESPAWN POSITION:
 func get_respawn_position():
 	var SIZE = GlobalValues.TILE_SIZE
-	var x = RESPAWN_POSITION.x * SIZE[0] + int(SIZE[0] / 2)
-	var y = RESPAWN_POSITION.y * SIZE[1] + int(SIZE[1] / 2)
+	var x = 5 * SIZE[0] + int(SIZE[0] / 2)
+	var y = 4 * SIZE[1] + int(SIZE[1] / 2)
 	global_position = Vector2(x, y)
 
-# MOVIMIENTO FRUTA:
+# MOVIMIENTO FANTASMA:
 func movimiento():
 	const SIZE = GlobalValues.TILE_SIZE
 	var tileActual = FuncionesGenerales.get_coords_divide_64_topleft(global_position)
@@ -38,9 +42,8 @@ func movimiento():
 		var colision_confirmado = FuncionesGenerales.check_colision_laberinto_tiles(direccion, tileActual)
 		
 		if tileActual2 in lista_puntos_intersecciones:
-			if FuncionesGenerales.get_rnd_int_number(0, 100) < 25:
-				elegir_otra_direccion(direccion)
-				colision_confirmado = FuncionesGenerales.check_colision_laberinto_tiles(direccion, tileActual)
+			seguir_a_pacman()
+			colision_confirmado = FuncionesGenerales.check_colision_laberinto_tiles(direccion, tileActual)
 		
 		if not colision_confirmado:
 			confirmado = GlobalValues.dic_direcciones[direccion]
@@ -58,11 +61,21 @@ func elegir_otra_direccion(copia_direccion):
 	var nueva_direccion = opcionesString.substr(aleatorio, 2)
 	direccion = nueva_direccion
 
-# COLISION VS PACMAN:
+# SEGUIR A PACMAN:
+func seguir_a_pacman():
+	if FuncionesGenerales.get_rnd_int_number(0, 100) > GlobalValues.porcentaje_seguir_a_pacman:
+		return
+	
+	if FuncionesGenerales.get_rnd_int_number(0, 10) < 5:  # Decisión horizontal/vertical
+		direccion = "up" if GlobalValues.pacmanRG.global_position.y < global_position.y else "do"
+	else:
+		direccion = "iz" if GlobalValues.pacmanRG.global_position.x < global_position.x else "de"
+
+# ANIMACIONES:
+func update_animation():
+	var animacion = GlobalValues.dic_direcciones[direccion][3]
+	animatedSprite.play(animacion)
+
+# COLISION VS FANTASMA:
 func _on_area_2d_body_entered(body):
-	#print("Bonus: ", body)
-	var nivel = GlobalValues.marcadores["scene"]
-	var bonus = lista_bonus_frutas[nivel] if nivel < len(lista_bonus_frutas) else 5000
-	FuncionesAuxiliaresPacman.agregar_puntos(bonus, body.global_position)
-	GlobalValues.pacmanRG.sonido_eating_cherry.play()
-	queue_free()
+	print("Colision-fantasma")

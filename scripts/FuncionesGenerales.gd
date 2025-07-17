@@ -32,6 +32,20 @@ func check_colision_laberinto_tiles(intento_confirmado, tileActual):
 	#else:
 		#tiempo_actual = 0.0
 
+# OBTENER LOS PUNTOS INTERSECCIONES:
+func get_puntos_intersecciones():
+	var lista = []
+	
+	for punto in GlobalValues.lista_puntos_intersecciones:
+		#print(punto)
+		punto[0] -= 25
+		punto[0] /= 50
+		punto[1] -= 25
+		punto[1] /= 50
+		lista.append([int(punto[0]), int(punto[1])])
+	
+	return lista
+
 # OBTENER UN NUMERO ALEATORIO:
 func get_rnd_int_number(min, max):
 	var rng = RandomNumberGenerator.new()

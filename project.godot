@@ -43,6 +43,7 @@ theme/custom_font="uid://0aates0v5a4s"
 2d_physics/layer_3="Pacman"
 2d_physics/layer_4="PuntosGordos"
 2d_physics/layer_5="Area2DFruta"
+2d_physics/layer_6="Area2DFantasma"
 
 [rendering]
 
