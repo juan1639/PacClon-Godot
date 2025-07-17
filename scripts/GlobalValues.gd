@@ -9,6 +9,15 @@ const TILE_SIZE = [64, 64]
 
 const TILE_SOLIDO = 9
 
+# DICCIONARIO DIRECCIONES (FRUTA): [x, y]
+var dic_direcciones = {
+	"null": [0, 0],
+	"up": [0, -1],
+	"do": [0, 1],
+	"iz": [-1, 0],
+	"de": [1, 0]
+}
+
 # LIMITES MUNDO (CAMARA):
 const TOP_LIMIT = 0
 const BOTTOM_LIMIT = 960

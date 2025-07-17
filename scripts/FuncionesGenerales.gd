@@ -6,6 +6,21 @@ signal next_level_instance
 # VARIABLES:
 var tiempo_actual = 0.0
 
+# CHECK-COLISIONS (LABERINTO-TILE):
+func check_colision_laberinto_tiles(intento_confirmado, tileActual):
+	var vel_x = GlobalValues.dic_direcciones[intento_confirmado][0]
+	var vel_y = GlobalValues.dic_direcciones[intento_confirmado][1]
+	
+	#if self.es_teletransporte(x, y, vel_x):
+		#return False
+	
+	#indice = self.game.obtener_indice(x + vel_x, y + vel_y)
+
+	#if (indice is None):
+		#return False
+	
+	return GlobalValues.laberinto[tileActual.y + vel_y][tileActual.x + vel_x] == GlobalValues.TILE_SOLIDO
+
 # EFECTO INTERMITENTE (INVULNERABLE - ESTRELLA):
 #func efecto_intermitente_invulnerable(delta, context):
 	#if context.invulnerability:
