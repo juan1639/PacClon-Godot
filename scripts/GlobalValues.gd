@@ -11,11 +11,11 @@ const TILE_SOLIDO = 9
 
 # DICCIONARIO DIRECCIONES (FRUTA): [x, y]
 var dic_direcciones = {
-	"null": [0, 0],
-	"up": [0, -1],
-	"do": [0, 1],
-	"iz": [-1, 0],
-	"de": [1, 0]
+	"null": [0, 0, "null"],
+	"up": [0, -1, "doizde"],
+	"do": [0, 1, "upizde"],
+	"iz": [-1, 0, "updode"],
+	"de": [1, 0, "updoiz"]
 }
 
 # LIMITES MUNDO (CAMARA):

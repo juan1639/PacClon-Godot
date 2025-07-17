@@ -28,15 +28,18 @@ func movimiento():
 	
 	if int(global_position.x - int(SIZE[0] / 2)) % SIZE[0] == 0 and int(global_position.y - int(SIZE[1] / 2)) % SIZE[1] == 0:
 		var colision_confirmado = FuncionesGenerales.check_colision_laberinto_tiles(direccion, tileActual)
-		#var colision_confirmado = false
 		
 		if not colision_confirmado:
 			confirmado = GlobalValues.dic_direcciones[direccion]
 		else:
-			elegir_otra_direccion()
+			elegir_otra_direccion(direccion)
 			return
 	
 	global_position += Vector2(confirmado[0] * SPEED, confirmado[1] * SPEED)
 
-func elegir_otra_direccion():
-	pass
+func elegir_otra_direccion(copia_direccion):
+	var opcionesString = GlobalValues.dic_direcciones[copia_direccion][2]
+	var aleatorio = FuncionesGenerales.get_rnd_int_number(0, 2)
+	aleatorio *= 2
+	var nueva_direccion = opcionesString.substr(aleatorio, 2)
+	direccion = nueva_direccion

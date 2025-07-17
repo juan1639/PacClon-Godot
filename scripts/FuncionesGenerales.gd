@@ -32,6 +32,12 @@ func check_colision_laberinto_tiles(intento_confirmado, tileActual):
 	#else:
 		#tiempo_actual = 0.0
 
+# OBTENER UN NUMERO ALEATORIO:
+func get_rnd_int_number(min, max):
+	var rng = RandomNumberGenerator.new()
+	rng.randomize() # Inicializa la semilla con el tiempo actual
+	return rng.randi_range(min, max)
+
 # OBTENER UNA (POR EJEMPLO: POS (64, 64) A PARTIR DE UNA POS (1, 1):
 func get_coords_multiply_64(vector):
 	var size = GlobalValues.TILE_SIZE
