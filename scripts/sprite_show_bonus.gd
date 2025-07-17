@@ -11,10 +11,10 @@ const direccion = -1
 # FUNCION INIT:
 func _ready():
 	frame = frame_ssheet
-	global_position += Vector2(64, -64)
-	timer.start(1.8)
+	global_position += Vector2(0, -GlobalValues.TILE_SIZE[1])
+	timer.start(1.9)
 
-# FUNCION A 60 FPS:
+# FUNCION UPDATE:
 func _process(delta):
 	global_position.y += direccion * vel_y * delta
 	

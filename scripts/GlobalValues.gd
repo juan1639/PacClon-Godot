@@ -18,6 +18,14 @@ var dic_direcciones = {
 	"de": [1, 0, "updoiz"]
 }
 
+# PUNTOS INTERSECCIONES (OJO! MULTIPLOS DE 50, hay que convertirlos a MULTIPLOS de 64):
+var lista_puntos_intersecciones = [
+	[75, 425], [225, 225], [225, 425], [225, 675], [225, 575],
+	[325, 575], [225, 75], [425, 425], [325, 225],
+	[875, 425], [725, 225], [725, 425], [725, 675], [725, 575],
+	[625, 575], [725, 75], [525, 425], [625, 225]
+]
+
 # LIMITES MUNDO (CAMARA):
 const TOP_LIMIT = 0
 const BOTTOM_LIMIT = 960
