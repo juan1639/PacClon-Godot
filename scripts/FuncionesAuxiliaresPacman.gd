@@ -3,6 +3,8 @@ extends Node
 signal marcador_actualizado
 signal scene_actualizada
 
+var show_bonus_scene = preload("res://scenes/sprite_show_bonus.tscn")
+
 # =================================================================
 # 	T R A N S I C I O N E S
 # -----------------------------------------------------------------
@@ -86,10 +88,10 @@ func en_juego(context):
 func agregar_puntos(cantidad, global_position):
 	GlobalValues.marcadores["score"] += cantidad
 	emit_signal("marcador_actualizado")
-	#var showBonus = show_bonus_scene.instantiate()
-	#showBonus.global_position = global_position
-	#showBonus.frame_ssheet = showBonus.choose_bonus[str(cantidad)]
-	#add_child(showBonus)
+	var showBonus = show_bonus_scene.instantiate()
+	showBonus.global_position = global_position
+	showBonus.frame_ssheet = showBonus.choose_bonus[str(cantidad)]
+	GlobalValues.game_manager_node.add_child(showBonus)
 
 # SOLO SUMAR PUNTOS (BONUS-FINAL-NIVEL):
 func agregar_puntos_sin_texto(cantidad):

@@ -1,10 +1,10 @@
-[gd_scene load_steps=7 format=3 uid="uid://dn24belmmoow3"]
+[gd_scene load_steps=8 format=3 uid="uid://dn24belmmoow3"]
 
 [ext_resource type="Texture2D" uid="uid://c1rvm7ikuwmj" path="res://assets/textures/cerezas.png" id="1_ch7q4"]
 [ext_resource type="Script" uid="uid://dwulfosjdrtqs" path="res://scripts/fruta.gd" id="1_kp0qs"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_ch7q4"]
-radius = 22.0907
+radius = 15.0333
 
 [sub_resource type="Animation" id="Animation_vfuih"]
 length = 0.001
@@ -43,7 +43,12 @@ _data = {
 &"Rotar": SubResource("Animation_kp0qs")
 }
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_kp0qs"]
+radius = 24.0
+
 [node name="Fruta" type="CharacterBody2D"]
+collision_layer = 0
+collision_mask = 0
 script = ExtResource("1_kp0qs")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
@@ -57,3 +62,12 @@ libraries = {
 &"": SubResource("AnimationLibrary_goabj")
 }
 autoplay = "Rotar"
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_layer = 16
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("CircleShape2D_kp0qs")
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

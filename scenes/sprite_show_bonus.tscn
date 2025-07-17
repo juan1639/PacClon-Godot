@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://iqa2jodsk6pe"]
+
+[ext_resource type="Texture2D" uid="uid://d2yikpxpq0250" path="res://assets/textures/showPtos.png" id="1_hj5on"]
+[ext_resource type="Script" uid="uid://cv05fhy2laui2" path="res://scripts/sprite_show_bonus.gd" id="1_t4idl"]
+
+[node name="SpriteShowBonus" type="Sprite2D"]
+scale = Vector2(3, 3)
+texture = ExtResource("1_hj5on")
+hframes = 5
+script = ExtResource("1_t4idl")
+
+[node name="Timer" type="Timer" parent="."]
+one_shot = true

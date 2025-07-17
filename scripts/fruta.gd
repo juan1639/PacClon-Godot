@@ -6,6 +6,8 @@ const RESPAWN_POSITION = Vector2(9, 11)
 const SPEED = 2
 var direccion = "de"
 
+const lista_bonus_frutas = [200, 200, 400, 800, 1600, 2000]
+
 # FUNCION INICIALIZADORA:
 func _ready():
 	get_respawn_position()
@@ -43,3 +45,11 @@ func elegir_otra_direccion(copia_direccion):
 	aleatorio *= 2
 	var nueva_direccion = opcionesString.substr(aleatorio, 2)
 	direccion = nueva_direccion
+
+func _on_area_2d_body_entered(body):
+	#print("Bonus: ", body)
+	var nivel = GlobalValues.marcadores["scene"]
+	var bonus = lista_bonus_frutas[nivel] if nivel < len(lista_bonus_frutas) else 5000
+	FuncionesAuxiliaresPacman.agregar_puntos(bonus, body.global_position)
+	GlobalValues.pacmanRG.sonido_eating_cherry.play()
+	queue_free()
