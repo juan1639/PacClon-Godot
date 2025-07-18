@@ -26,6 +26,8 @@ func _physics_process(delta):
 	if GlobalValues.estado_juego["en_juego"]:
 		movimiento()
 		update_animation()
+	elif GlobalValues.estado_juego["transicion_next_vida"]:
+		get_respawn_position()
 
 # GET RESPAWN POSITION:
 func get_respawn_position():
@@ -83,4 +85,12 @@ func update_animation():
 
 # COLISION VS FANTASMA:
 func _on_area_2d_body_entered(body):
+	if not GlobalValues.estado_juego["en_juego"]:
+		return
+	
 	print("Colision-fantasma")
+	FuncionesGenerales.reset_estados_cambio_estado_a("transicion_vida_menos")
+	GlobalValues.marcadores["lives"] -= 1
+	body.timerTransicionVidaMenos.start(2.1)
+	body.global_scale = Vector2(4, 4)
+	body.sonido_lose_life.play()

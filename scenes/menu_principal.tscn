@@ -32,6 +32,7 @@ corner_radius_bottom_left = 4
 [node name="TextureRect" type="TextureRect" parent="CanvasLayer"]
 offset_right = 1964.0
 offset_bottom = 1114.0
+scale = Vector2(0.65, 0.65)
 texture = ExtResource("2_mk4g1")
 
 [node name="PanelContainer" type="PanelContainer" parent="CanvasLayer"]
@@ -41,9 +42,9 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -133.0
-offset_top = 72.0
+offset_top = 68.0
 offset_right = 120.0
-offset_bottom = 253.0
+offset_bottom = 249.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_iep14")

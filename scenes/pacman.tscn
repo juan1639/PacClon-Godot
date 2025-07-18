@@ -1,8 +1,9 @@
-[gd_scene load_steps=24 format=3 uid="uid://ccs5ucgrd0tx1"]
+[gd_scene load_steps=38 format=3 uid="uid://ccs5ucgrd0tx1"]
 
 [ext_resource type="Texture2D" uid="uid://cgsfthgo76moq" path="res://assets/textures/pac-sprite-sheet.png" id="1_kcrxf"]
 [ext_resource type="Script" uid="uid://dyto4dfkkam4g" path="res://scripts/pacman.gd" id="1_kjyp3"]
 [ext_resource type="AudioStream" uid="uid://ca8ps0d1fu128" path="res://assets/audio/pacmanwaka-recortado.mp3" id="3_0qx7c"]
+[ext_resource type="Texture2D" uid="uid://xttxe3ristm5" path="res://assets/textures/pacmanDies-ssheet.png" id="3_bgnd2"]
 [ext_resource type="AudioStream" uid="uid://dakd6swpxs0me" path="res://assets/audio/pacmandies.ogg" id="4_ccr3a"]
 [ext_resource type="AudioStream" uid="uid://dvmixfmwyujmj" path="res://assets/audio/pacmaneatinghost.ogg" id="5_ceynl"]
 [ext_resource type="AudioStream" uid="uid://cov3ti6omjrlr" path="res://assets/audio/pacmanazules.ogg" id="6_47rue"]
@@ -58,6 +59,58 @@ region = Rect2(640, 0, 64, 64)
 atlas = ExtResource("1_kcrxf")
 region = Rect2(704, 0, 64, 64)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_q7rwc"]
+atlas = ExtResource("1_kcrxf")
+region = Rect2(256, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_luhwp"]
+atlas = ExtResource("3_bgnd2")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2vipk"]
+atlas = ExtResource("3_bgnd2")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1gynd"]
+atlas = ExtResource("3_bgnd2")
+region = Rect2(32, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tjtka"]
+atlas = ExtResource("3_bgnd2")
+region = Rect2(48, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gwbs6"]
+atlas = ExtResource("3_bgnd2")
+region = Rect2(64, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3fs3s"]
+atlas = ExtResource("3_bgnd2")
+region = Rect2(80, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_katx0"]
+atlas = ExtResource("3_bgnd2")
+region = Rect2(96, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_e2i7t"]
+atlas = ExtResource("3_bgnd2")
+region = Rect2(112, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hlamh"]
+atlas = ExtResource("3_bgnd2")
+region = Rect2(128, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ougfn"]
+atlas = ExtResource("3_bgnd2")
+region = Rect2(144, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4ktql"]
+atlas = ExtResource("3_bgnd2")
+region = Rect2(176, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4rjeb"]
+atlas = ExtResource("3_bgnd2")
+region = Rect2(160, 0, 16, 16)
+
 [sub_resource type="SpriteFrames" id="SpriteFrames_0qx7c"]
 animations = [{
 "frames": [{
@@ -100,31 +153,83 @@ animations = [{
 "loop": true,
 "name": &"Derecha",
 "speed": 24.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_q7rwc")
+}],
+"loop": false,
+"name": &"Idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_luhwp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2vipk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1gynd")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tjtka")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gwbs6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3fs3s")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_katx0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_e2i7t")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hlamh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ougfn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4ktql")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4rjeb")
+}],
+"loop": true,
+"name": &"PacmanDies",
+"speed": 5.0
 }]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_0qx7c"]
 radius = 29.0
 
 [node name="Pacman" type="CharacterBody2D"]
+z_index = 10
 collision_layer = 4
 script = ExtResource("1_kjyp3")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_0qx7c")
-animation = &"Derecha"
+animation = &"PacmanDies"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(3, 0)
 shape = SubResource("CircleShape2D_0qx7c")
 
 [node name="Camera2D" type="Camera2D" parent="."]
-zoom = Vector2(2, 2)
 limit_left = 0
 limit_top = 0
-limit_right = 1212
+limit_right = 1280
 limit_bottom = 960
 
 [node name="TimerPreparado" type="Timer" parent="."]
+one_shot = true
+
+[node name="TimerTransicionVidaMenos" type="Timer" parent="."]
 one_shot = true
 
 [node name="SonidoWaka" type="AudioStreamPlayer2D" parent="."]

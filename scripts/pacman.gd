@@ -17,7 +17,7 @@ const RESPAWN_POSITION = GlobalValues.PACMAN_INIT_POSITION
 #@onready var cpuParticlesFireworks = preload("res://scenes/fireworks.tscn")
 @onready var timerPreparado = $TimerPreparado
 #@onready var timerColision = $TimerColision
-#@onready var timerTransicionVidaMenos = $TimerTransicionVidaMenos
+@onready var timerTransicionVidaMenos = $TimerTransicionVidaMenos
 #@onready var timerAzules = $TimerAzules
 @onready var sonido_waka = $SonidoWaka
 @onready var sonido_lose_life = $SonidoLoseLife
@@ -38,24 +38,25 @@ var fireworks: Node2D = null
 # FUNCION INICIALIZADORA:
 func _ready():
 	print("Instancia Pacman")
-	global_position = FuncionesGenerales.get_coords_multiply_64(RESPAWN_POSITION)
+	get_respawn_position()
 	get_child(0).frame = 4
 	
 	FuncionesGenerales.reset_estados_cambio_estado_a("transicion_preparado")
 	texto_preparado = txt_preparado_scene.instantiate()
 	call_deferred("instanciar_preparado")
 	timerPreparado.start(4.2)
+	AnimacionesPacman.update_animation(self)
 	
 	musica_preparado.play()
 
-# FUNCION EJECUTANDOSE A 60 FPS:
+# FUNCION UPDATE:
 func _physics_process(delta):
 	FuncionesAuxiliaresPacman.transicion_preparado()
-	#FuncionesAuxiliaresPacman.transicion_vida_menos(delta, self)
-	#FuncionesAuxiliaresPacman.transicion_next_vida(delta, self)
+	FuncionesAuxiliaresPacman.transicion_vida_menos(self)
+	FuncionesAuxiliaresPacman.transicion_next_vida(self)
 	#FuncionesAuxiliaresPacman.transicion_level_up(delta, self)
 	FuncionesAuxiliaresPacman.en_juego(self)
-	#FuncionesAuxiliaresPacman.otros_estados(delta, self)
+	#FuncionesAuxiliaresPacman.otros_estados(self)
 
 # ----------------------------------------------------------------
 #	S E Ñ A L E S
@@ -151,6 +152,14 @@ func _on_timer_preparado_timeout():
 		#musica_gameover.play()
 	#else:
 		#sonido_lose_life.play()
+
+# OBTENER RESPAWN-POSITION:
+func get_respawn_position():
+	global_position = FuncionesGenerales.get_coords_multiply_64(RESPAWN_POSITION)
+	global_scale = Vector2(1, 1)
+	animatedSprite.flip_h = false
+	animatedSprite.rotation = deg_to_rad(0)
+	FuncionesMovPacman.reset_direccion_tras_vida_menos()
 
 # INSTANCIAR PREPARADO:
 func instanciar_preparado():
