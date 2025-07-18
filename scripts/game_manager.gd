@@ -127,6 +127,7 @@ func instanciar_fantasmas():
 		fantasma.ini_x = GlobalValues.dic_id_fantasmas[idFantasma][1]
 		fantasma.ini_y = GlobalValues.dic_id_fantasmas[idFantasma][2]
 		add_child(fantasma)
+		GlobalValues.fantasmas_instancias.append(fantasma)
 
 # CALL-DEFERRED:
 func ejemplo_call_deferred():

@@ -32,7 +32,7 @@ tile_set = SubResource("TileSet_wyudc")
 [node name="EscapatoriaIz" type="Area2D" parent="."]
 position = Vector2(-83, 733)
 collision_layer = 64
-collision_mask = 52
+collision_mask = 772
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="EscapatoriaIz"]
 position = Vector2(1.5, 4)
@@ -41,7 +41,7 @@ shape = SubResource("RectangleShape2D_si65j")
 [node name="EscapatoriaDe" type="Area2D" parent="."]
 position = Vector2(1258, 737)
 collision_layer = 128
-collision_mask = 52
+collision_mask = 772
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="EscapatoriaDe"]
 position = Vector2(38, 2)

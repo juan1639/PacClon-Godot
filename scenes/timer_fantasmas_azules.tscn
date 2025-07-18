@@ -1,11 +1,15 @@
-[gd_scene load_steps=2 format=3 uid="uid://cqejmcdakm1rm"]
+[gd_scene load_steps=3 format=3 uid="uid://cqejmcdakm1rm"]
 
 [ext_resource type="Script" uid="uid://cxn2gdll5nsmo" path="res://scripts/timer_fantasmas_azules.gd" id="1_sn2ap"]
+[ext_resource type="AudioStream" uid="uid://cov3ti6omjrlr" path="res://assets/audio/pacmanazules.ogg" id="2_e7td8"]
 
 [node name="TimerFantasmasAzules" type="Node2D"]
 script = ExtResource("1_sn2ap")
 
 [node name="TimerFantasmasAzules" type="Timer" parent="."]
 one_shot = true
+
+[node name="SonidoDuranteAzules" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("2_e7td8")
 
 [connection signal="timeout" from="TimerFantasmasAzules" to="." method="_on_timer_fantasmas_azules_timeout"]

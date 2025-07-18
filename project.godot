@@ -46,6 +46,8 @@ theme/custom_font="uid://0aates0v5a4s"
 2d_physics/layer_6="Area2DFantasma"
 2d_physics/layer_7="EscapatoriaIz"
 2d_physics/layer_8="EscapatoriaDe"
+2d_physics/layer_9="FantasmaBody"
+2d_physics/layer_10="FrutaBody"
 
 [rendering]
 

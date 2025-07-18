@@ -9,6 +9,8 @@ var idAnimacion: String
 var ini_x: int
 var ini_y: int
 
+var comido = false
+
 var lista_puntos_intersecciones = []
 
 # REFERENCIAS:
@@ -96,4 +98,9 @@ func _on_area_2d_body_entered(body):
 		body.global_scale = Vector2(4, 4)
 		body.sonido_lose_life.play()
 	else:
-		pass
+		if not comido:
+			print("come-fantasma")
+			comido = true
+			GlobalValues.contador_bonus_come_fantasmas *= 2
+			FuncionesAuxiliaresPacman.agregar_puntos(GlobalValues.contador_bonus_come_fantasmas, global_position)
+			body.sonido_eating_ghost.play()

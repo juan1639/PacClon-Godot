@@ -350,6 +350,8 @@ animations = [{
 radius = 20.0
 
 [node name="Fantasma" type="CharacterBody2D"]
+collision_layer = 256
+collision_mask = 4
 script = ExtResource("1_n64ir")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]

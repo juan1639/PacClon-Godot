@@ -11,13 +11,11 @@ func check_colision_laberinto_tiles(intento_confirmado, tileActual):
 	var vel_x = GlobalValues.dic_direcciones[intento_confirmado][0]
 	var vel_y = GlobalValues.dic_direcciones[intento_confirmado][1]
 	
-	#if self.es_teletransporte(x, y, vel_x):
-		#return False
+	if tileActual.y + vel_y < 0 or tileActual.y + vel_y >= GlobalValues.FILAS:
+		return false
 	
-	#indice = self.game.obtener_indice(x + vel_x, y + vel_y)
-
-	#if (indice is None):
-		#return False
+	if tileActual.x + vel_x < 0 or tileActual.x + vel_x >= GlobalValues.COLUMNAS:
+		return false
 	
 	return GlobalValues.laberinto[tileActual.y + vel_y][tileActual.x + vel_x] == GlobalValues.TILE_SOLIDO
 

@@ -13,6 +13,8 @@ const TILE_SOLIDO = 9
 var porcentaje_seguir_a_pacman = 65
 var fantasmas_azules = false
 var timer_fantasmas_azules: Node2D
+var duracion_fantasmas_azules = [7.5, 7.5, 6.9, 6.1, 5.2, 4.5, 3.9, 3.1, 2.5]
+var contador_bonus_come_fantasmas = 100
 
 # DICCIONARIO DIRECCIONES (FRUTA): [x, y]
 var dic_direcciones = {

@@ -69,9 +69,6 @@ func check_colision_laberinto_tiles(intento_confirmado, tileActual):
 	var vel_x = dic_direcciones[intento_confirmado][0]
 	var vel_y = dic_direcciones[intento_confirmado][1]
 	
-	#if self.es_teletransporte(x, y, vel_x):
-		#return False
-	
 	if tileActual.y + vel_y < 0 or tileActual.y + vel_y >= GlobalValues.FILAS:
 		return false
 	
