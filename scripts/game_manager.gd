@@ -9,17 +9,15 @@ extends Node2D
 @onready var fruta_scene = preload("res://scenes/fruta.tscn")
 @onready var fantasma_scene = preload("res://scenes/fantasma.tscn")
 
+@onready var gameover_scene = preload("res://scenes/gameover.tscn")
+#@onready var button_next_level_scene = preload("res://scenes/next_level_button.tscn")
+
 # SCENE-CONTAINER (CURRENT SCENE):
 @onready var scene_container = $SceneContainer
 
 # PUNTITOS-CONTAINER:
 @onready var puntitos_container = $PuntitosContainer
 @onready var puntos_gordos_container = $PuntosGordosContainer
-
-# REFERENCIAS A SPRITES:
-#@onready var goomba_scene = preload("res://scenes/goomba.tscn")
-#@onready var gameover_scene = preload("res://scenes/gameover.tscn")
-#@onready var button_next_level_scene = preload("res://scenes/next_level_button.tscn")
 
 # REFERENCIA A PACMAN(JUGADOR):
 @onready var pacman = $Pacman
@@ -44,16 +42,19 @@ func _ready():
 	if GlobalValues.marcadores["scene"] == 1:
 		FuncionesGenerales.reset_scores()
 		FuncionesAuxiliaresPacman.agregar_puntos_sin_texto(-99)
-		FuncionesAuxiliaresPacman.actualizar_scene(0)
+		FuncionesAuxiliaresPacman.actualizar_scene(-99)
+		FuncionesAuxiliaresPacman.actualizar_vidas(-99)
+		
 	else:
 		FuncionesAuxiliaresPacman.agregar_puntos_sin_texto(0)
 		FuncionesAuxiliaresPacman.actualizar_scene(0)
+		FuncionesAuxiliaresPacman.actualizar_vidas(0)
 	
 	# RESETEAR LISTA-DESACTIVADOS:
 	GlobalValues.lista_desactivados = []
 	
 	# CONEXION A SEÑALES GAMEOVER y BUTTON-NEXT-LEVEL:
-	#FuncionesGenerales.connect("gameover_instance", Callable(self, "_on_gameover_instance"))
+	FuncionesGenerales.connect("gameover_instance", Callable(self, "_on_gameover_instance"))
 	#FuncionesGenerales.connect("next_level_instance", Callable(self, "_on_next_level_instance"))
 	
 	# REFERENCIA ESTE NODO PRINCIPAL (MAIN):
@@ -70,16 +71,6 @@ func _ready():
 	crear_puntos_gordos()
 	
 	instanciar_fantasmas()
-	
-	# INSTANCIAR GOOMBAS:
-	#for spawn_point in goomba_spawns.get_children():
-		#print("Instanciando Goomba en ", spawn_point.global_position)
-		#var goomba = goomba_scene.instantiate()
-		#goomba.global_position = spawn_point.global_position
-		#goomba.get_child(2).connect("body_entered", Callable(mario, "_on_goomba_body_entered").bind(goomba))
-		#goomba.get_child(3).connect("body_entered", Callable(mario, "_on_aplastar_goomba_body_entered").bind(goomba))
-		#add_child(goomba)
-		#GlobalValues.goombas_instancias.append(goomba)
 	
 	# MOSTRAR NUMERO DE CHILDRENS DE ESTA ESCENA (PRINCIPAL):
 	print("Nro childrens: ", get_child_count())
@@ -150,10 +141,8 @@ func ejemplo_call_deferred():
 
 # INSTANCIAR GAME OVER:
 func _on_gameover_instance():
-	pass
-	
-	#var gameover = gameover_scene.instantiate()
-	#add_child(gameover)
+	var gameover = gameover_scene.instantiate()
+	add_child(gameover)
 
 # INSTANCIAR BUTTON-NEXT-LEVVEL:
 func _on_next_level_instance():

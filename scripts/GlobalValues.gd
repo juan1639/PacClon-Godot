@@ -55,7 +55,7 @@ var pacmanRG: CharacterBody2D = null
 var marcadores = {
 	"score": 0,
 	"scene": 1,
-	"lives": 3
+	"lives": 2
 }
 
 # ESTADOS DEL JUEGO

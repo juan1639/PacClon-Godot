@@ -1,0 +1,62 @@
+[gd_scene load_steps=5 format=3 uid="uid://7qkur51ii0o8"]
+
+[ext_resource type="AudioStream" uid="uid://6cnwrk8jcqlf" path="res://assets/audio/gameoveretro.ogg" id="1_ncp31"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_dy3ie"]
+bg_color = Color(0.117647, 0.121569, 0.117647, 0.756863)
+corner_radius_top_left = 6
+corner_radius_top_right = 6
+corner_radius_bottom_right = 6
+corner_radius_bottom_left = 6
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ncp31"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_q0yjy"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[node name="Gameover" type="CanvasLayer"]
+
+[node name="PanelContainer" type="PanelContainer" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -336.0
+offset_top = -179.0
+offset_right = 336.0
+offset_bottom = 179.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_dy3ie")
+
+[node name="MarginContainer" type="MarginContainer" parent="PanelContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 80
+theme_override_constants/margin_top = 48
+theme_override_constants/margin_right = 80
+theme_override_constants/margin_bottom = 12
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer/MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 200
+
+[node name="Label" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.929412, 0.203922, 0.117647, 1)
+theme_override_font_sizes/font_size = 64
+text = " Game Over "
+
+[node name="Button" type="Button" parent="PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_hover_color = Color(0.968627, 0.360784, 0.0980392, 1)
+theme_override_colors/font_color = Color(0.94902, 0.878431, 0.447059, 1)
+theme_override_font_sizes/font_size = 32
+theme_override_styles/hover = SubResource("StyleBoxFlat_ncp31")
+theme_override_styles/normal = SubResource("StyleBoxFlat_q0yjy")
+text = " Ir a Menu Principal "
+
+[node name="SonidoGameover" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("1_ncp31")
+autoplay = true

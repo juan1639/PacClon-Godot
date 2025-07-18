@@ -52,4 +52,4 @@ frame = 5
 [node name="Vidas" type="Label" parent="PanelContainer/MarginContainer/HBoxContainer/HBoxContainer"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 24
-text = "  x 9"
+text = "  x "

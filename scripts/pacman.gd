@@ -160,6 +160,7 @@ func get_respawn_position():
 	animatedSprite.flip_h = false
 	animatedSprite.rotation = deg_to_rad(0)
 	FuncionesMovPacman.reset_direccion_tras_vida_menos()
+	visible = true
 
 # INSTANCIAR PREPARADO:
 func instanciar_preparado():

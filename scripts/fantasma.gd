@@ -90,7 +90,6 @@ func _on_area_2d_body_entered(body):
 	
 	print("Colision-fantasma")
 	FuncionesGenerales.reset_estados_cambio_estado_a("transicion_vida_menos")
-	GlobalValues.marcadores["lives"] -= 1
 	body.timerTransicionVidaMenos.start(2.1)
 	body.global_scale = Vector2(4, 4)
 	body.sonido_lose_life.play()
