@@ -24,6 +24,7 @@ extends Node2D
 
 # REFERENCIAS A LOS TIMERS:
 @onready var timerFruta = $TimerFruta
+@onready var timerMiniPausa = $TimerMiniPausa
 
 # FUNCION INICIALIZADORA:
 func _ready():
@@ -154,3 +155,6 @@ func _on_next_level_instance():
 
 func _on_timer_fruta_timeout():
 	instanciar_fruta()
+
+func _on_timer_mini_pausa_timeout():
+	GlobalValues.mini_pausa = false

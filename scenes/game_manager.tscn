@@ -20,4 +20,8 @@ script = ExtResource("1_hwd4i")
 [node name="TimerFruta" type="Timer" parent="."]
 one_shot = true
 
+[node name="TimerMiniPausa" type="Timer" parent="."]
+one_shot = true
+
 [connection signal="timeout" from="TimerFruta" to="." method="_on_timer_fruta_timeout"]
+[connection signal="timeout" from="TimerMiniPausa" to="." method="_on_timer_mini_pausa_timeout"]

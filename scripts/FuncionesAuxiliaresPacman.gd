@@ -57,7 +57,7 @@ func transicion_preparado():
 		return
 
 func en_juego(context):
-	if not GlobalValues.estado_juego["en_juego"]:
+	if not GlobalValues.estado_juego["en_juego"] or GlobalValues.mini_pausa:
 		return
 	
 	FuncionesMovPacman.movimiento_pacman(context)

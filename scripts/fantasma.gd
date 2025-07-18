@@ -25,6 +25,9 @@ func _ready():
 	
 # FUNCION UPDATE:
 func _physics_process(delta):
+	if GlobalValues.mini_pausa:
+		return
+	
 	if GlobalValues.estado_juego["en_juego"]:
 		movimiento()
 		FuncionesGenerales.efecto_intermitente_azules(delta, self)
@@ -82,8 +85,16 @@ func seguir_a_pacman():
 
 # ANIMACIONES:
 func update_animation():
+	if comido:
+		update_animation_ojos()
+		return
+	
 	var animacion = GlobalValues.dic_direcciones[direccion][3]
 	animacion += idAnimacion
+	animatedSprite.play(animacion)
+
+func update_animation_ojos():
+	var animacion = GlobalValues.dic_direcciones[direccion][4]
 	animatedSprite.play(animacion)
 
 # COLISION VS FANTASMA:
@@ -104,3 +115,8 @@ func _on_area_2d_body_entered(body):
 			GlobalValues.contador_bonus_come_fantasmas *= 2
 			FuncionesAuxiliaresPacman.agregar_puntos(GlobalValues.contador_bonus_come_fantasmas, global_position)
 			body.sonido_eating_ghost.play()
+			call_deferred("comenzar_mini_pausa")
+
+func comenzar_mini_pausa():
+	GlobalValues.mini_pausa = true
+	GlobalValues.game_manager_node.timerMiniPausa.start(0.6)

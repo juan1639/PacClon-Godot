@@ -21,6 +21,10 @@ func check_colision_laberinto_tiles(intento_confirmado, tileActual):
 
 # EFECTO INTERMITENTE:
 func efecto_intermitente_azules(delta, context):
+	if context.comido:
+		context.modulate = Color(1, 1, 1, 1)
+		return
+	
 	if GlobalValues.fantasmas_azules:
 		tiempo_actual += delta
 

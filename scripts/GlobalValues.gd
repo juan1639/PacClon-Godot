@@ -9,6 +9,8 @@ const TILE_SIZE = [64, 64]
 
 const TILE_SOLIDO = 9
 
+var mini_pausa = false
+
 # FANTASMAS GLOBAL VALUES:
 var porcentaje_seguir_a_pacman = 65
 var fantasmas_azules = false
@@ -18,11 +20,11 @@ var contador_bonus_come_fantasmas = 100
 
 # DICCIONARIO DIRECCIONES (FRUTA): [x, y]
 var dic_direcciones = {
-	"null": [0, 0, "null", "Default"],
-	"up": [0, -1, "doizde", "Arriba"],
-	"do": [0, 1, "upizde", "Abajo"],
-	"iz": [-1, 0, "updode", "Izquierda"],
-	"de": [1, 0, "updoiz", "Derecha"]
+	"null": [0, 0, "null", "Default", "Default"],
+	"up": [0, -1, "doizde", "Arriba", "OjosArriba"],
+	"do": [0, 1, "upizde", "Abajo", "OjosAbajo"],
+	"iz": [-1, 0, "updode", "Izquierda", "OjosIzquierda"],
+	"de": [1, 0, "updoiz", "Derecha", "OjosDerecha"]
 }
 
 # DICCIONARIO ID-FANTASMAS:

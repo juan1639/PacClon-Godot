@@ -1,4 +1,4 @@
-[gd_scene load_steps=55 format=3 uid="uid://cvv14ttln0bjc"]
+[gd_scene load_steps=67 format=3 uid="uid://cvv14ttln0bjc"]
 
 [ext_resource type="Script" uid="uid://detrp45su1o20" path="res://scripts/fantasma.gd" id="1_n64ir"]
 [ext_resource type="Texture2D" uid="uid://ceqvl3g3as0hb" path="res://assets/textures/fantanim00.png" id="1_t212r"]
@@ -17,6 +17,10 @@
 [ext_resource type="Texture2D" uid="uid://ki8n5tbghtuu" path="res://assets/textures/fantanim30.png" id="11_k1f85"]
 [ext_resource type="Texture2D" uid="uid://dw8nq0vwnscnn" path="res://assets/textures/fantanim21.png" id="13_4u1gv"]
 [ext_resource type="Texture2D" uid="uid://c44a3amxhot5w" path="res://assets/textures/fantanim31.png" id="15_duexa"]
+[ext_resource type="Texture2D" uid="uid://b5qg24p2q5bfi" path="res://assets/textures/fantanim53.png" id="18_0ibam"]
+[ext_resource type="Texture2D" uid="uid://cv518ktux1c03" path="res://assets/textures/fantanim52.png" id="18_5xhs4"]
+[ext_resource type="Texture2D" uid="uid://s2jlevagsll2" path="res://assets/textures/fantanim50.png" id="20_2wc3a"]
+[ext_resource type="Texture2D" uid="uid://5o3xthib7sfb" path="res://assets/textures/fantanim51.png" id="20_s4w6o"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_qq8is"]
 atlas = ExtResource("2_e5ye4")
@@ -152,6 +156,38 @@ region = Rect2(0, 0, 50, 50)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_d623d"]
 atlas = ExtResource("13_4u1gv")
+region = Rect2(50, 0, 50, 50)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xj1rl"]
+atlas = ExtResource("18_0ibam")
+region = Rect2(0, 0, 50, 50)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_l7sqc"]
+atlas = ExtResource("18_0ibam")
+region = Rect2(50, 0, 50, 50)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_y8tha"]
+atlas = ExtResource("18_5xhs4")
+region = Rect2(0, 0, 50, 50)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_uab5n"]
+atlas = ExtResource("18_5xhs4")
+region = Rect2(50, 0, 50, 50)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rpv0a"]
+atlas = ExtResource("20_2wc3a")
+region = Rect2(0, 0, 50, 50)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2as7t"]
+atlas = ExtResource("20_2wc3a")
+region = Rect2(50, 0, 50, 50)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ixh7h"]
+atlas = ExtResource("20_s4w6o")
+region = Rect2(0, 0, 50, 50)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_j4mjp"]
+atlas = ExtResource("20_s4w6o")
 region = Rect2(50, 0, 50, 50)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_ptde3"]
@@ -342,6 +378,50 @@ animations = [{
 "loop": true,
 "name": &"Izquierdaverde",
 "speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xj1rl")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_l7sqc")
+}],
+"loop": false,
+"name": &"OjosAbajo",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_y8tha")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_uab5n")
+}],
+"loop": false,
+"name": &"OjosArriba",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rpv0a")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2as7t")
+}],
+"loop": false,
+"name": &"OjosDerecha",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ixh7h")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_j4mjp")
+}],
+"loop": false,
+"name": &"OjosIzquierda",
+"speed": 10.0
 }]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_e5ye4"]
@@ -357,7 +437,7 @@ script = ExtResource("1_n64ir")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 scale = Vector2(1.2, 1.2)
 sprite_frames = SubResource("SpriteFrames_ptde3")
-animation = &"Arribarosa"
+animation = &"OjosDerecha"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_e5ye4")
