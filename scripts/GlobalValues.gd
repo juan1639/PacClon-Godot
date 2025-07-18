@@ -10,7 +10,9 @@ const TILE_SIZE = [64, 64]
 const TILE_SOLIDO = 9
 
 # FANTASMAS GLOBAL VALUES:
-var porcentaje_seguir_a_pacman = 55
+var porcentaje_seguir_a_pacman = 65
+var fantasmas_azules = false
+var timer_fantasmas_azules: Node2D
 
 # DICCIONARIO DIRECCIONES (FRUTA): [x, y]
 var dic_direcciones = {

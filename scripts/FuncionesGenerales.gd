@@ -21,16 +21,17 @@ func check_colision_laberinto_tiles(intento_confirmado, tileActual):
 	
 	return GlobalValues.laberinto[tileActual.y + vel_y][tileActual.x + vel_x] == GlobalValues.TILE_SOLIDO
 
-# EFECTO INTERMITENTE (INVULNERABLE - ESTRELLA):
-#func efecto_intermitente_invulnerable(delta, context):
-	#if context.invulnerability:
-		#tiempo_actual += delta
-#
-		## Cambia el color cada frame o según el tiempo
-		#var intensidad = sin(tiempo_actual * 20.0) * 0.5 + 0.5
-		#context.modulate = Color(1, intensidad, intensidad)
-	#else:
-		#tiempo_actual = 0.0
+# EFECTO INTERMITENTE:
+func efecto_intermitente_azules(delta, context):
+	if GlobalValues.fantasmas_azules:
+		tiempo_actual += delta
+
+		# Cambia el color cada frame o según el tiempo
+		var intensidad = sin(tiempo_actual * 20.0) * 0.5 + 0.5
+		context.modulate = Color(intensidad, intensidad, 1)
+	else:
+		tiempo_actual = 0.0
+		context.modulate = Color(1, 1, 1, 1)
 
 # OBTENER LOS PUNTOS INTERSECCIONES:
 func get_puntos_intersecciones():

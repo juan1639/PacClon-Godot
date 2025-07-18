@@ -1,0 +1,11 @@
+[gd_scene load_steps=2 format=3 uid="uid://cqejmcdakm1rm"]
+
+[ext_resource type="Script" uid="uid://cxn2gdll5nsmo" path="res://scripts/timer_fantasmas_azules.gd" id="1_sn2ap"]
+
+[node name="TimerFantasmasAzules" type="Node2D"]
+script = ExtResource("1_sn2ap")
+
+[node name="TimerFantasmasAzules" type="Timer" parent="."]
+one_shot = true
+
+[connection signal="timeout" from="TimerFantasmasAzules" to="." method="_on_timer_fantasmas_azules_timeout"]

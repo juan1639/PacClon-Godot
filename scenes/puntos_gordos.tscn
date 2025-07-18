@@ -1,5 +1,6 @@
-[gd_scene load_steps=9 format=3 uid="uid://ctw0b0n7pin10"]
+[gd_scene load_steps=11 format=3 uid="uid://ctw0b0n7pin10"]
 
+[ext_resource type="Script" uid="uid://ttk0oc3do6o7" path="res://scripts/puntos_gordos.gd" id="1_gauj1"]
 [ext_resource type="Texture2D" uid="uid://dqhcv4tlni8o" path="res://assets/textures/silverbubble.png" id="1_wxkib"]
 [ext_resource type="Texture2D" uid="uid://b8eob4q7s6yky" path="res://assets/textures/particula-humo.png" id="2_5arjn"]
 
@@ -52,9 +53,13 @@ point_count = 3
 _data = [Vector2(0.0227273, 0.94382), 0.0, 0.0, 0, 0, Vector2(0.965909, 0.0449438), 0.0, 0.0, 0, 0]
 point_count = 2
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_gauj1"]
+radius = 22.0
+
 [node name="PuntosGordos" type="CharacterBody2D"]
 collision_layer = 8
 collision_mask = 4
+script = ExtResource("1_gauj1")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("1_wxkib")
@@ -82,3 +87,12 @@ initial_velocity_max = 40.0
 linear_accel_curve = SubResource("Curve_5arjn")
 scale_amount_min = 0.6
 scale_amount_curve = SubResource("Curve_gauj1")
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_layer = 8
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("CircleShape2D_gauj1")
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
