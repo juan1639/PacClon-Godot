@@ -1,7 +1,9 @@
-[gd_scene load_steps=7 format=4 uid="uid://ckkaes7rrumjh"]
+[gd_scene load_steps=11 format=4 uid="uid://ckkaes7rrumjh"]
 
 [ext_resource type="Script" uid="uid://h4r02l02g084" path="res://scripts/escena_1.gd" id="1_5wpnq"]
 [ext_resource type="Texture2D" uid="uid://cuw0wea4fen5u" path="res://assets/textures/pac-tile-set.png" id="1_si65j"]
+[ext_resource type="Texture2D" uid="uid://b8eob4q7s6yky" path="res://assets/textures/particula-humo.png" id="3_6l8ce"]
+[ext_resource type="AudioStream" uid="uid://bd8c7bhk2ukuv" path="res://assets/audio/apear-item.mp3" id="4_ak14h"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_si65j"]
 texture = ExtResource("1_si65j")
@@ -21,6 +23,15 @@ size = Vector2(45, 42)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_5wpnq"]
 size = Vector2(39, 37)
+
+[sub_resource type="Curve" id="Curve_ak14h"]
+_limits = [-200.0, 200.0, 0.0, 1.0]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.0170455, 191.011), 0.0, 0.0, 0, 0, Vector2(0.9375, -164.045), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="Curve" id="Curve_emlkk"]
+_data = [Vector2(0.0227273, 0.94382), 0.0, 0.0, 0, 0, Vector2(0.965909, 0.0449438), 0.0, 0.0, 0, 0]
+point_count = 2
 
 [node name="Escena_1" type="Node2D"]
 script = ExtResource("1_5wpnq")
@@ -46,6 +57,47 @@ collision_mask = 772
 [node name="CollisionShape2D" type="CollisionShape2D" parent="EscapatoriaDe"]
 position = Vector2(38, 2)
 shape = SubResource("RectangleShape2D_5wpnq")
+
+[node name="ParticulasEscapatoriaIz" type="CPUParticles2D" parent="."]
+modulate = Color(1, 1, 1, 0.705882)
+z_index = 20
+position = Vector2(-17, 737)
+amount = 40
+texture = ExtResource("3_6l8ce")
+lifetime = 1.5
+speed_scale = 3.0
+randomness = 0.5
+fixed_fps = 30
+spread = 180.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 40.0
+initial_velocity_max = 60.0
+linear_accel_curve = SubResource("Curve_ak14h")
+scale_amount_max = 2.0
+scale_amount_curve = SubResource("Curve_emlkk")
+color = Color(0.941176, 0.513726, 0.968627, 0.882353)
+
+[node name="ParticulasEscapatoriaDe" type="CPUParticles2D" parent="."]
+modulate = Color(1, 1, 1, 0.705882)
+z_index = 20
+position = Vector2(1259, 732)
+amount = 40
+texture = ExtResource("3_6l8ce")
+lifetime = 1.5
+speed_scale = 3.0
+randomness = 0.5
+fixed_fps = 30
+spread = 180.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 40.0
+initial_velocity_max = 60.0
+linear_accel_curve = SubResource("Curve_ak14h")
+scale_amount_max = 2.0
+scale_amount_curve = SubResource("Curve_emlkk")
+color = Color(0.941176, 0.513726, 0.968627, 0.882353)
+
+[node name="SonidoEscapatoria" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("4_ak14h")
 
 [connection signal="body_entered" from="EscapatoriaIz" to="." method="_on_escapatoria_iz_body_entered"]
 [connection signal="body_entered" from="EscapatoriaDe" to="." method="_on_escapatoria_de_body_entered"]

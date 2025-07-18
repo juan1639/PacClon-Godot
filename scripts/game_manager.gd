@@ -1,8 +1,7 @@
 extends Node2D
 
 # REFERENCIAS A LAS SCENES:
-@onready var scene_1 = preload("res://scenes/escena_1.tscn")
-#@onready var world1_2_scene = preload("res://scenes/world_1_2.tscn")
+@onready var escena_a_instanciar: PackedScene
 
 @onready var puntitos_scene = preload("res://scenes/puntitos.tscn")
 @onready var puntos_gordos_scene = preload("res://scenes/puntos_gordos.tscn")
@@ -28,16 +27,15 @@ extends Node2D
 
 # FUNCION INICIALIZADORA:
 func _ready():
-	print("Start new game")
-	timerFruta.start(12.1)
+	print("Start Level: " + str(GlobalValues.marcadores["scene"]))
+	GlobalValues.timerFrutaLoop = timerFruta
+	GlobalValues.timerFrutaLoop.start(12.1)
 	
 	# INSTANCIAR CURRENT-WORLD:
-	var current_scene = scene_1.instantiate()
+	escena_a_instanciar = GlobalValues.escenarios[GlobalValues.marcadores["scene"]]
+	var current_scene = escena_a_instanciar.instantiate()
 	scene_container.add_child(current_scene)
 	GlobalValues.laberinto = Escenarios.get_laberinto()
-	
-	#var escapatoriaZone_iz = current_world.get_node("EscapatoriaZoneIz")
-	#var escapatoriaZone_de = current_world.get_node("EscapatoriaZoneDe")
 	
 	# RESETEAR MARCADORES:
 	if GlobalValues.marcadores["scene"] == 1:
@@ -50,9 +48,6 @@ func _ready():
 		FuncionesAuxiliaresPacman.agregar_puntos_sin_texto(0)
 		FuncionesAuxiliaresPacman.actualizar_scene(0)
 		FuncionesAuxiliaresPacman.actualizar_vidas(0)
-	
-	# RESETEAR LISTA-DESACTIVADOS:
-	GlobalValues.lista_desactivados = []
 	
 	# CONEXION A SEÑALES GAMEOVER y BUTTON-NEXT-LEVEL:
 	FuncionesGenerales.connect("gameover_instance", Callable(self, "_on_gameover_instance"))
@@ -70,7 +65,6 @@ func _ready():
 	# CREAR LOS PUNTITOS EN EL ESCENARIO:
 	crear_puntitos()
 	crear_puntos_gordos()
-	
 	instanciar_fantasmas()
 	
 	# MOSTRAR NUMERO DE CHILDRENS DE ESTA ESCENA (PRINCIPAL):
@@ -78,12 +72,8 @@ func _ready():
 	
 	for child in get_children():
 		print("Children: ", child)
-	
-	# CONECTAR SEÑAL de fallZone:
-	#escapatoriaZone_iz.connect("body_entered", Callable(pacman, "_on_escapatoria_zone_iz_body_entered"))
-	#escapatoriaZone_de.connect("body_entered", Callable(pacman, "_on_escapatoria_zone_de_body_entered"))
 
-# FUNCIONES:
+# ==================== FUNCIONES ======================
 # INSTANCIAR PUNTITOS:
 func crear_puntitos():
 	for filas in range(GlobalValues.FILAS):
@@ -133,13 +123,6 @@ func instanciar_fantasmas():
 # CALL-DEFERRED:
 func ejemplo_call_deferred():
 	pass
-	
-	#var goomba = goomba_scene.instantiate()
-	#goomba.global_position = Vector2(mario.global_position.x + 124, -20)
-	#goomba.reset_tipo_goomba_cambio_a("paracaidas")
-	#goomba.get_child(2).connect("body_entered", Callable(mario, "_on_goomba_body_entered").bind(goomba))
-	#goomba.get_child(3).connect("body_entered", Callable(mario, "_on_aplastar_goomba_body_entered").bind(goomba))
-	#add_child(goomba)
 
 # INSTANCIAR GAME OVER:
 func _on_gameover_instance():

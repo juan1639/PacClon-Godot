@@ -1,5 +1,6 @@
-[gd_scene load_steps=5 format=3 uid="uid://7qkur51ii0o8"]
+[gd_scene load_steps=6 format=3 uid="uid://7qkur51ii0o8"]
 
+[ext_resource type="Script" uid="uid://yi1q67d4xorr" path="res://scripts/gameover.gd" id="1_dy3ie"]
 [ext_resource type="AudioStream" uid="uid://6cnwrk8jcqlf" path="res://assets/audio/gameoveretro.ogg" id="1_ncp31"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_dy3ie"]
@@ -16,6 +17,7 @@ bg_color = Color(0.6, 0.6, 0.6, 0)
 bg_color = Color(0.6, 0.6, 0.6, 0)
 
 [node name="Gameover" type="CanvasLayer"]
+script = ExtResource("1_dy3ie")
 
 [node name="PanelContainer" type="PanelContainer" parent="."]
 anchors_preset = 8
@@ -60,3 +62,5 @@ text = " Ir a Menu Principal "
 [node name="SonidoGameover" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("1_ncp31")
 autoplay = true
+
+[connection signal="pressed" from="PanelContainer/MarginContainer/VBoxContainer/Button" to="." method="_on_button_pressed"]

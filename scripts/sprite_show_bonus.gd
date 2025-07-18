@@ -12,7 +12,7 @@ const direccion = -1
 func _ready():
 	frame = frame_ssheet
 	global_position += Vector2(0, -GlobalValues.TILE_SIZE[1])
-	timer.start(1.9)
+	timer.start(2.3)
 
 # FUNCION UPDATE:
 func _process(delta):

@@ -11,12 +11,24 @@ const TILE_SOLIDO = 9
 
 var mini_pausa = false
 
+var timerFrutaLoop: Timer
+
+# ESCENARIOS:
+var escenarios = [
+	preload("res://scenes/escena_1.tscn"),
+	preload("res://scenes/escena_1.tscn"),
+	preload("res://scenes/escena_1.tscn")
+]
+
 # FANTASMAS GLOBAL VALUES:
 var porcentaje_seguir_a_pacman = 65
 var fantasmas_azules = false
 var timer_fantasmas_azules: Node2D
 var duracion_fantasmas_azules = [7.5, 7.5, 6.9, 6.1, 5.2, 4.5, 3.9, 3.1, 2.5]
 var contador_bonus_come_fantasmas = 100
+
+# LISTA DE FANTASMAS:
+var fantasmas_instancias = []
 
 # DICCIONARIO DIRECCIONES (FRUTA): [x, y]
 var dic_direcciones = {
@@ -77,12 +89,6 @@ var estado_juego = {
 
 # Referencia al labarinto (de cada SCENE):
 var laberinto = null
-
-# LISTA DE FANTASMAS:
-var fantasmas_instancias = []
-
-# LISTA DESACTIVADOS:
-var lista_desactivados = []
 
 # LISTA_EXCEPCIONES (NO CREAR PUNTITOS EN ESAS POSICIONES):
 var lista_excepciones = [

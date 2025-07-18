@@ -1,7 +1,8 @@
-[gd_scene load_steps=8 format=3 uid="uid://dn24belmmoow3"]
+[gd_scene load_steps=9 format=3 uid="uid://dn24belmmoow3"]
 
 [ext_resource type="Texture2D" uid="uid://c1rvm7ikuwmj" path="res://assets/textures/cerezas.png" id="1_ch7q4"]
 [ext_resource type="Script" uid="uid://dwulfosjdrtqs" path="res://scripts/fruta.gd" id="1_kp0qs"]
+[ext_resource type="AudioStream" uid="uid://bd8c7bhk2ukuv" path="res://assets/audio/apear-item.mp3" id="3_vfuih"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_ch7q4"]
 radius = 15.0333
@@ -69,5 +70,8 @@ collision_mask = 4
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 shape = SubResource("CircleShape2D_kp0qs")
+
+[node name="SonidoApearItem" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_vfuih")
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
