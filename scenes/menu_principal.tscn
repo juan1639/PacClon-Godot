@@ -52,14 +52,14 @@ script = ExtResource("1_i85hu")
 
 [node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/PanelContainer"]
 layout_mode = 2
-theme_override_constants/margin_left = 40
-theme_override_constants/margin_top = 24
-theme_override_constants/margin_right = 40
-theme_override_constants/margin_bottom = 18
+theme_override_constants/margin_left = 50
+theme_override_constants/margin_top = 32
+theme_override_constants/margin_right = 50
+theme_override_constants/margin_bottom = 20
 
 [node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/PanelContainer/MarginContainer"]
 layout_mode = 2
-theme_override_constants/separation = 20
+theme_override_constants/separation = 24
 
 [node name="Button" type="Button" parent="CanvasLayer/PanelContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2
@@ -93,4 +93,5 @@ position = Vector2(-827, -612)
 stream = ExtResource("3_iep14")
 
 [connection signal="pressed" from="CanvasLayer/PanelContainer/MarginContainer/VBoxContainer/Button" to="CanvasLayer/PanelContainer" method="_on_button_pressed"]
+[connection signal="pressed" from="CanvasLayer/PanelContainer/MarginContainer/VBoxContainer/Button2" to="CanvasLayer/PanelContainer" method="_on_button_2_pressed"]
 [connection signal="pressed" from="CanvasLayer/PanelContainer/MarginContainer/VBoxContainer/Button3" to="CanvasLayer/PanelContainer" method="_on_button_3_pressed"]

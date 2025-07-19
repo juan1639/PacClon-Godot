@@ -7,7 +7,7 @@ var duracion_azules: float
 
 func _ready():
 	GlobalValues.fantasmas_azules = true
-	duracion_azules = get_duracion_fantasmas_azules()
+	duracion_azules = FuncionesGenerales.get_duracion_fantasmas_azules()
 	print(duracion_azules)
 	timer.start(duracion_azules)
 	sonido_durante_azules.play()
@@ -21,11 +21,3 @@ func _on_timer_fantasmas_azules_timeout():
 		fantasma.comido = false
 	
 	queue_free()
-
-func get_duracion_fantasmas_azules():
-	var nivel = GlobalValues.marcadores["scene"]
-	
-	if nivel > 8:
-		return 2.5
-	
-	return GlobalValues.duracion_fantasmas_azules[nivel]

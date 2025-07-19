@@ -6,6 +6,15 @@ signal next_level_instance
 # VARIABLES:
 var tiempo_actual = 0.0
 
+# OBTENER LA DURACION DE LOS FANTASMAS AZULES:
+func get_duracion_fantasmas_azules():
+	var nivel = GlobalValues.marcadores["scene"]
+	
+	if nivel > 8:
+		return 2.5
+	
+	return GlobalValues.duracion_fantasmas_azules[nivel]
+
 # CHECK-COLISIONS (LABERINTO-TILE):
 func check_colision_laberinto_tiles(intento_confirmado, tileActual):
 	var vel_x = GlobalValues.dic_direcciones[intento_confirmado][0]
