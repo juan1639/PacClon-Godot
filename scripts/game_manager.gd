@@ -66,7 +66,11 @@ func _ready():
 	# REFERENCIA AL TILEMAP:
 	GlobalValues.ref_tilemap = current_scene.get_node("TileMapLayer")
 	
-	# CREAR LOS PUNTITOS EN EL ESCENARIO:
+	# LISTA PUNTOS INTERSECCIONES (CORRECTA):
+	if len(GlobalValues.puntos_intersecciones) == 0:
+		GlobalValues.puntos_intersecciones = FuncionesGenerales.get_puntos_intersecciones()
+	
+	# CREAR LOS PUNTITOS, FANTASMAS, etc. EN EL ESCENARIO:
 	crear_puntitos()
 	crear_puntos_gordos()
 	instanciar_fantasmas()

@@ -7,7 +7,7 @@ const FILAS = 15
 const COLUMNAS = 19
 const TILE_SIZE = [64, 64]
 
-const TILE_SOLIDO = 9
+const TILE_SOLIDO = 8
 
 # VARIABLES GLOBALES:
 var mini_pausa = false
@@ -56,6 +56,9 @@ var lista_puntos_intersecciones = [
 	[875, 425], [725, 225], [725, 425], [725, 675], [725, 575],
 	[625, 575], [725, 75], [525, 425], [625, 225]
 ]
+
+# LISTA DEFINITIVA (CONVERTIDA A TILES 64 x 64):
+var puntos_intersecciones = []
 
 # LIMITES MUNDO (CAMARA):
 const TOP_LIMIT = 0

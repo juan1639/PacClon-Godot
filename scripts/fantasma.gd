@@ -11,14 +11,11 @@ var ini_y: int
 
 var comido = false
 
-var lista_puntos_intersecciones = []
-
 # REFERENCIAS:
 @onready var animatedSprite = $AnimatedSprite2D
 
 # FUNCION INICIALIZADORA:
 func _ready():
-	lista_puntos_intersecciones = FuncionesGenerales.get_puntos_intersecciones()
 	#print(lista_puntos_intersecciones)
 	get_respawn_position()
 	update_animation()
@@ -54,7 +51,7 @@ func movimiento():
 	if int(global_position.x - int(SIZE[0] / 2)) % SIZE[0] == 0 and int(global_position.y - int(SIZE[1] / 2)) % SIZE[1] == 0:
 		var colision_confirmado = FuncionesGenerales.check_colision_laberinto_tiles(direccion, tileActual)
 		
-		if tileActual2 in lista_puntos_intersecciones:
+		if tileActual2 in GlobalValues.puntos_intersecciones:
 			seguir_a_pacman()
 			colision_confirmado = FuncionesGenerales.check_colision_laberinto_tiles(direccion, tileActual)
 		

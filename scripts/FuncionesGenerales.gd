@@ -26,7 +26,7 @@ func check_colision_laberinto_tiles(intento_confirmado, tileActual):
 	if tileActual.x + vel_x < 0 or tileActual.x + vel_x >= GlobalValues.COLUMNAS:
 		return false
 	
-	return GlobalValues.laberinto[tileActual.y + vel_y][tileActual.x + vel_x] == GlobalValues.TILE_SOLIDO
+	return GlobalValues.laberinto[tileActual.y + vel_y][tileActual.x + vel_x] >= GlobalValues.TILE_SOLIDO
 
 # EFECTO INTERMITENTE:
 func efecto_intermitente_azules(delta, context):
