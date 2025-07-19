@@ -3,7 +3,7 @@ extends CharacterBody2D
 # SE OBTIENE EN get_respawn_position():
 const RESPAWN_POSITION = Vector2(9, 11)
 
-const SPEED = 2
+var SPEED = GlobalValues.SPEED_LIST[GlobalValues.SPEED_ELEGIDA] / 2
 var direccion = "de"
 
 const lista_bonus_frutas = [200, 200, 400, 800, 1600, 2000]
@@ -35,6 +35,7 @@ func get_respawn_position():
 	var x = RESPAWN_POSITION.x * SIZE[0] + int(SIZE[0] / 2)
 	var y = RESPAWN_POSITION.y * SIZE[1] + int(SIZE[1] / 2)
 	global_position = Vector2(x, y)
+	SPEED = GlobalValues.SPEED_LIST[GlobalValues.SPEED_ELEGIDA] / 2
 
 # MOVIMIENTO FRUTA:
 func movimiento():

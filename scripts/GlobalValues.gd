@@ -9,8 +9,10 @@ const TILE_SIZE = [64, 64]
 
 const TILE_SOLIDO = 9
 
+# VARIABLES GLOBALES:
 var mini_pausa = false
-
+var SPEED_LIST = [2, 4, 8]
+var SPEED_ELEGIDA = 1
 var timerFrutaLoop: Timer
 
 # ESCENARIOS:

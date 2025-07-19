@@ -7,9 +7,12 @@ func _on_area_2d_body_entered(body):
 		return
 	
 	print(body)
+	print(global_position)
 	GlobalValues.timer_fantasmas_azules = timer_fantasmas_azules_scene.instantiate()
 	call_deferred("instanciar_timer_fantasmas_azules")
 	GlobalValues.pacmanRG.sonido_eating_ghost.play()
+	GlobalValues.pacmanRG.global_position = global_position
+	GlobalValues.pacmanRG.SPEED *= 2
 	queue_free()
 
 func instanciar_timer_fantasmas_azules():

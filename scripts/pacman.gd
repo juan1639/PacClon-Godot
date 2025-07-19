@@ -1,7 +1,7 @@
 extends CharacterBody2D
 
 # SPEED:
-const SPEED = 4
+var SPEED = GlobalValues.SPEED_LIST[GlobalValues.SPEED_ELEGIDA]
 
 # INVULNERABLE:
 var invulnerability = false
@@ -69,6 +69,7 @@ func get_respawn_position():
 	animatedSprite.rotation = deg_to_rad(0)
 	FuncionesMovPacman.reset_direccion_tras_vida_menos()
 	visible = true
+	SPEED = GlobalValues.SPEED_LIST[GlobalValues.SPEED_ELEGIDA]
 
 # INSTANCIAR PREPARADO:
 func instanciar_preparado():

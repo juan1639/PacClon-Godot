@@ -15,6 +15,7 @@ func _ready():
 func _on_timer_fantasmas_azules_timeout():
 	GlobalValues.fantasmas_azules = false
 	GlobalValues.contador_bonus_come_fantasmas = 100
+	GlobalValues.pacmanRG.SPEED /= 2
 	
 	for fantasma in GlobalValues.fantasmas_instancias:
 		fantasma.comido = false

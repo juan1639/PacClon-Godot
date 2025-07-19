@@ -3,7 +3,7 @@ extends CharacterBody2D
 # SE OBTIENE EN get_respawn_position():
 const RESPAWN_POSITION = Vector2(9, 11)
 
-const SPEED = 4
+var SPEED = GlobalValues.SPEED_LIST[GlobalValues.SPEED_ELEGIDA]
 var direccion = "de"
 var idAnimacion: String
 var ini_x: int
@@ -41,6 +41,7 @@ func get_respawn_position():
 	var x = ini_x * SIZE[0] + int(SIZE[0] / 2)
 	var y = ini_y * SIZE[1] + int(SIZE[1] / 2)
 	global_position = Vector2(x, y)
+	SPEED = GlobalValues.SPEED_LIST[GlobalValues.SPEED_ELEGIDA]
 
 # MOVIMIENTO FANTASMA:
 func movimiento():
