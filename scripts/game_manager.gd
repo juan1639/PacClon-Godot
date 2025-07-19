@@ -119,6 +119,7 @@ func instanciar_fruta():
 func instanciar_fantasmas():
 	for idFantasma in GlobalValues.dic_id_fantasmas.keys():
 		var fantasma = fantasma_scene.instantiate()
+		fantasma.name = idFantasma
 		fantasma.idAnimacion = GlobalValues.dic_id_fantasmas[idFantasma][0]
 		fantasma.ini_x = GlobalValues.dic_id_fantasmas[idFantasma][1]
 		fantasma.ini_y = GlobalValues.dic_id_fantasmas[idFantasma][2]
@@ -134,7 +135,7 @@ func _on_gameover_instance():
 	var gameover = gameover_scene.instantiate()
 	add_child(gameover)
 
-# INSTANCIAR BUTTON-NEXT-LEVVEL:
+# INSTANCIAR BUTTON-NEXT-LEVEL:
 func _on_next_level_instance():
 	pass
 	

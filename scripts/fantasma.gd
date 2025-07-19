@@ -81,8 +81,10 @@ func seguir_a_pacman():
 	
 	if FuncionesGenerales.get_rnd_int_number(0, 10) < 5:  # Decisión horizontal/vertical
 		direccion = "up" if GlobalValues.pacmanRG.global_position.y < global_position.y else "do"
+		print("Seguir: ", name)
 	else:
 		direccion = "iz" if GlobalValues.pacmanRG.global_position.x < global_position.x else "de"
+		print("Seguir: ", name)
 
 # ANIMACIONES:
 func update_animation():

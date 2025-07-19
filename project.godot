@@ -13,7 +13,11 @@ config_version=5
 config/name="PacClon"
 run/main_scene="uid://km8ynqnq50c7"
 config/features=PackedStringArray("4.4", "GL Compatibility")
+boot_splash/bg_color=Color(0.282353, 0.294118, 0.294118, 1)
+boot_splash/fullsize=false
+boot_splash/image="uid://urq3acs63j3n"
 config/icon="res://icon.svg"
+boot_splash/minimum_display_time=1200
 
 [autoload]
 
