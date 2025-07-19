@@ -92,6 +92,12 @@ var estado_juego = {
 # Referencia al labarinto (de cada SCENE):
 var laberinto = null
 
+# PUNTITOS:
+var puntitos = {
+	"contador": 0,
+	"totales": 0
+}
+
 # LISTA_EXCEPCIONES (NO CREAR PUNTITOS EN ESAS POSICIONES):
 var lista_excepciones = [
 	PACMAN_INIT_POSITION, Vector2i(1, 1), Vector2i(17, 1), Vector2i(1, 13), Vector2i(17, 13)

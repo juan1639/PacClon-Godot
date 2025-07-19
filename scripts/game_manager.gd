@@ -49,6 +49,10 @@ func _ready():
 		FuncionesAuxiliaresPacman.actualizar_scene(0)
 		FuncionesAuxiliaresPacman.actualizar_vidas(0)
 	
+	# RESETEAR PUNTITOS:
+	GlobalValues.puntitos["contador"] = 0
+	GlobalValues.puntitos["totales"] = 0
+	
 	# CONEXION A SEÑALES GAMEOVER y BUTTON-NEXT-LEVEL:
 	FuncionesGenerales.connect("gameover_instance", Callable(self, "_on_gameover_instance"))
 	#FuncionesGenerales.connect("next_level_instance", Callable(self, "_on_next_level_instance"))
@@ -91,6 +95,7 @@ func crear_puntitos():
 					var puntito = puntitos_scene.instantiate()
 					puntito.global_position = posicion_global_iteracion
 					puntitos_container.add_child(puntito)
+					GlobalValues.puntitos["totales"] += 1
 
 # INSTANCIAR PUNTOS GORDOS:
 func crear_puntos_gordos():

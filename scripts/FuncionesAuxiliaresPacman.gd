@@ -5,6 +5,7 @@ signal scene_actualizada
 signal vidas_actualizadas
 
 var show_bonus_scene = preload("res://scenes/sprite_show_bonus.tscn")
+var boton_continuar_scene = preload("res://scenes/boton_continuar.tscn")
 
 # =================================================================
 # 	T R A N S I C I O N E S
@@ -39,18 +40,11 @@ func transicion_next_vida(context):
 	if context.timerTransicionVidaMenos.time_left == 0.0:
 		FuncionesGenerales.reset_estados_cambio_estado_a("en_juego")
 
-#func transicion_level_up(context):
-	#if not GlobalValues.estado_juego["transicion_goal_zone"]:
-		#return
-	#
-	#if context.velocity.x <= 0.0:
-		#context.velocity = Vector2(abs(context.VEL_MAX / 8), 0)
-		#context.sprite.flip_h = false
-	#
-	#FuncionesGenerales.aplicar_gravedad(delta, context)
-	#context.move_and_slide()
-	#AnimacionesMario.update_animation(context)
-	#FuncionesMovSaltoMario.aplicar_clamps(context)
+func transicion_level_up(context):
+	if not GlobalValues.estado_juego["transicion_level_up"]:
+		return
+	
+	print("Level up")
 
 func transicion_preparado():
 	if not GlobalValues.estado_juego["transicion_preparado"]:
@@ -62,7 +56,7 @@ func en_juego(context):
 	
 	FuncionesMovPacman.movimiento_pacman(context)
 	AnimacionesPacman.update_animation(context)
-	#FuncionesGenerales.efecto_intermitente_invulnerable(delta, context)
+	check_puntitos_to_level_up(context)
 
 #func otros_estados(context):
 	#for estado in context.lista_estados_transiciones:
@@ -74,6 +68,14 @@ func en_juego(context):
 # ================================================================
 # 	FUNCIONES AUXILIARES PACMAN
 #-----------------------------------------------------------------
+# CHECKEAR SI HEMOS COMIDO TODOS LOS PUNTITOS:
+func check_puntitos_to_level_up(context):
+	if GlobalValues.puntitos["contador"] >= GlobalValues.puntitos["totales"]:
+		FuncionesGenerales.reset_estados_cambio_estado_a("transicion_level_up")
+		context.sonido_level_up.play()
+		var botonContinuar = boton_continuar_scene.instantiate()
+		GlobalValues.game_manager_node.add_child(botonContinuar)
+
 # SCORES:
 func agregar_puntos(cantidad, global_position):
 	GlobalValues.marcadores["score"] += cantidad
